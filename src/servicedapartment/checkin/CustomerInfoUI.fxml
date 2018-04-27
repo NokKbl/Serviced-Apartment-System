@@ -89,7 +89,7 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <TextField>
+            <TextField alignment="CENTER" promptText="dd/mm/yyyy">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

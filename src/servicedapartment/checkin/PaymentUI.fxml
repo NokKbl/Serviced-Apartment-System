@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="350.0" prefWidth="484.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <top>
+      <Label text="PAYMENT" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="Comic Sans MS" size="48.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label layoutX="41.0" layoutY="137.0" text="Payment Type:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="175.0" layoutY="137.0" mnemonicParsing="false" text="Cash">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="271.0" layoutY="137.0" mnemonicParsing="false" text="Credit Cards">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="41.0" layoutY="14.0" text="Rate: ">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="104.0" layoutY="17.0" mnemonicParsing="false" text="Single Room - THB 1,000/Night">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="104.0" layoutY="55.0" mnemonicParsing="false" text="Twin Room - THB 2,500/Night">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="104.0" layoutY="94.0" mnemonicParsing="false" text="Double Room - THB 3,000/Night">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </RadioButton>
+            <Button layoutX="127.0" layoutY="183.0" mnemonicParsing="false" text="Continue">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="257.0" layoutY="183.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="95.0" text="Cancel">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
