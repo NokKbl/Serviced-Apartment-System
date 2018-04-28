@@ -29,12 +29,25 @@ public class Main extends Application {
 		String url = "jdbc:sqlite:" + filename;
 		try (Connection connect = DriverManager.getConnection(url)){
 			if(connect != null) {
-				DatabaseMetaData meta = connect.getMetaData();
-				System.out.println("The driver name " + meta.getDriverName());
-				System.out.println("new db create");
+				//DatabaseMetaData meta = connect.getMetaData();
+				Statement stm = connect.createStatement();
+				String sqlTable = "CREATE TABLE Customer_log "
+										+ "(ROOM_NUMBER		INT			NOT NULL,"
+										+ "ROOM_TYPE		CHAR(6)		NOT NULL,"
+										+ "CUSTOMER_NAME	CHAR(30)	NOT NULL,"
+										+ "PHONE_NUMBER		INT			NOT NULL,"
+										+ "EMAIL			CHAR(30),"
+										+ "STAY_[DAYS]		INT			NOT NULL,"
+										+ "PERSON_AMOUNT	INT			NOT NULL,"
+										+ "CHECKIN_DATE		DATE		NOT NULL,"
+										+ "CHECKOUT_DATE	DATE		NOT NULL,"
+										+ "STATUS			CHAR(5)		NOT NULL)";
+				stm.executeUpdate(sqlTable);
+				stm.close();
+				connect.close();
 			}
 		} catch(SQLException e) {
-			System.out.println(e.getMessage());
+			System.err.println("table already exists");
 		}
 	}
 	
