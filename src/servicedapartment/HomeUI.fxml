@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.HomepageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.HomeController">
    <center>
       <Pane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,12 +31,12 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="&gt;&gt; FOR CLERK &lt;&lt;">
+                  <Label text="&lt;&lt; FOR CLERK &gt;&gt;">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check in">
+                  <Button fx:id="checkin" mnemonicParsing="false" onAction="#handleCheckIn" prefHeight="42.0" prefWidth="250.0" text="Check in">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
@@ -44,7 +44,7 @@
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check out">
+                  <Button fx:id="checkout" mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check out">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </VBox.margin>
@@ -52,12 +52,12 @@
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Button>
-                  <Label text="&gt;&gt; FOR ADMIN &lt;&lt;">
+                  <Label text="&lt;&lt; FOR ADMIN &gt;&gt;">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="360.0" text="Data and Preferences...">
+                  <Button fx:id="admin" mnemonicParsing="false" prefHeight="42.0" prefWidth="360.0" text="Data and Preferences...">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>

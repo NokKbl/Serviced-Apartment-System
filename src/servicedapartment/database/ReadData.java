@@ -1,5 +1,5 @@
 package servicedapartment.database;
 
-public class ReadData {
+public class ReadData extends DataFactory{
 
 }

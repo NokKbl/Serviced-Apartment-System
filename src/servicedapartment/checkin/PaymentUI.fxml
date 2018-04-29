@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="350.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="661.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label text="PAYMENT" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -59,17 +59,26 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </RadioButton>
-            <Button layoutX="127.0" layoutY="183.0" mnemonicParsing="false" text="Continue">
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="64.0" prefWidth="627.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Cancel">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="257.0" layoutY="183.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="95.0" text="Cancel">
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Continue">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
          </children>
-      </Pane>
-   </center>
+      </HBox>
+   </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </BorderPane>
