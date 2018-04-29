@@ -9,7 +9,7 @@
 
 <BorderPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <Label text="HISTORY" BorderPane.alignment="CENTER">
+      <Label text="LOGIN PAGE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="48.0" />
          </font>
@@ -26,7 +26,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="37.0" prefWidth="310.0">
+            <TextField prefHeight="37.0" prefWidth="310.0" promptText="username">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -36,17 +36,17 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="37.0" prefWidth="310.0">
+            <PasswordField prefHeight="37.0" prefWidth="310.0" promptText="password">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
-            </TextField>
+            </PasswordField>
             <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Back">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Login">
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Log in">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

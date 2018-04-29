@@ -9,18 +9,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.HomepageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.HomepageController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="550.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="600.0" fitWidth="600.0" opacity="0.91" pickOnBounds="true">
-               <image>
-                  <Image url="@../../source_picture/night-dark-blur-blurred.jpg" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0">
+            <VBox alignment="CENTER" prefHeight="550.0" prefWidth="600.0">
                <children>
-                  <Label text="S E R V I C E D" textAlignment="CENTER" textFill="#69ffb4">
+                  <Label text="S E R V I C E D" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS" size="72.0" />
                      </font>
@@ -28,7 +23,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="A p a r t m e n t" textAlignment="CENTER" textFill="#69ffb4">
+                  <Label text="A p a r t m e n t" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS" size="60.0" />
                      </font>
@@ -36,12 +31,12 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="&gt;&gt; FOR CUSTOMER &lt;&lt;">
+                  <Label text="&gt;&gt; FOR CLERK &lt;&lt;">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="222.0" text="Booking &amp; Check-in">
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check in">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
@@ -49,28 +44,20 @@
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="222.0" text="Checkout">
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check out">
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="222.0" text="Information">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Button>
-                  <Label text="&gt;&gt; FOR ADMIN &lt;&lt;" textFill="#8fffe5">
+                  <Label text="&gt;&gt; FOR ADMIN &lt;&lt;">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="222.0" text="History">
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="360.0" text="Data and Preferences...">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>

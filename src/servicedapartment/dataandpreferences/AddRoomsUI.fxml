@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="406.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <top>
+      <Label text="Add Rooms" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS" size="36.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <AnchorPane prefHeight="266.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="32.0" layoutY="31.0" text="Add:">
+               <font>
+                  <Font name="Comic Sans MS" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="109.0" layoutY="36.0" text="Studio Room">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="109.0" layoutY="95.0" text="1-Bedroom Room">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="108.0" layoutY="157.0" text="2-Bedroom Room">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="441.0" layoutY="36.0" text="Room(s)">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="441.0" layoutY="95.0" text="Room(s)">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="441.0" layoutY="157.0" text="Room(s)">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="108.0" layoutY="218.0" text="3-Bedroom Room">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="441.0" layoutY="218.0" text="Room(s)">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefWidth="130.0" text="Add">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="130.0" text="Back">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</BorderPane>
