@@ -30,17 +30,17 @@ public class Main extends Application {
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				String sqlTable = "CREATE TABLE Customer_log "
-										+ "(ROOM_NUMBER		INT			NOT NULL,"
-										+ "ROOM_TYPE		CHAR(6)		NOT NULL,"
-										+ "CUSTOMER_NAME	CHAR(30)	NOT NULL,"
-										+ "PHONE_NUMBER		INT			NOT NULL,"
-										+ "EMAIL			CHAR(30),"
-										+ "STAY_[DAYS]		INT			NOT NULL,"
-										+ "CLIENTS_AMOUNT	INT			NOT NULL,"
-										+ "CHECKIN_DATE		DATE		NOT NULL,"
-										+ "CHECKOUT_DATE	DATE		NOT NULL,"
-										+ "STATUS			CHAR(5)		NOT NULL,"
-										+ "TOTAL			INT(15)		NOT NULL)";
+										+ "(ROOM_NUMBER		CHAR(5)			NOT NULL,"
+										+ "ROOM_TYPE		VARCHAR(10)		NOT NULL,"
+										+ "CUSTOMER_NAME	VARCHAR(30)		NOT NULL,"
+										+ "PHONE_NUMBER		VARCHAR(15)		NOT NULL,"
+										+ "EMAIL			VARCHAR(30),"
+										+ "STAY_FOR			VARCHAR(20)		NOT NULL,"
+										+ "CLIENTS_AMOUNT	INT				NOT NULL,"
+										+ "CHECKIN_DATE		DATE			NOT NULL,"
+										+ "CHECKOUT_DATE	DATE			NOT NULL,"
+										+ "STATUS			VARCHAR(10)		NOT NULL,"
+										+ "TOTAL			INT(15)			NOT NULL)";
 				stm.executeUpdate(sqlTable);
 				stm.close();
 				connect.close();

@@ -9,7 +9,7 @@
 
 <BorderPane prefHeight="661.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <Label text="PAYMENT" BorderPane.alignment="CENTER">
+      <Label text="ROOM &amp; PAYMENT" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" top="20.0" />
          </BorderPane.margin>
@@ -24,41 +24,34 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Label layoutX="41.0" layoutY="137.0" text="Payment Type:">
+            <Label layoutX="21.0" layoutY="441.0" text="Payment Type:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <RadioButton layoutX="175.0" layoutY="137.0" mnemonicParsing="false" text="Cash">
+            <RadioButton layoutX="155.0" layoutY="441.0" mnemonicParsing="false" text="Cash">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="271.0" layoutY="137.0" mnemonicParsing="false" text="Credit Cards">
+            <RadioButton layoutX="251.0" layoutY="441.0" mnemonicParsing="false" text="Credit Cards">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </RadioButton>
-            <Label layoutX="41.0" layoutY="14.0" text="Rate: ">
+            <Label layoutX="46.0" layoutY="18.0" text="Room Type:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <RadioButton layoutX="104.0" layoutY="17.0" mnemonicParsing="false" text="Single Room - THB 1,000/Night">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton layoutX="104.0" layoutY="55.0" mnemonicParsing="false" text="Twin Room - THB 2,500/Night">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton layoutX="104.0" layoutY="94.0" mnemonicParsing="false" text="Double Room - THB 3,000/Night">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </RadioButton>
+            <ComboBox layoutX="163.0" layoutY="14.0" prefHeight="34.0" prefWidth="150.0" />
+            <TableView layoutX="21.0" layoutY="71.0" prefHeight="355.0" prefWidth="564.0">
+              <columns>
+                <TableColumn prefWidth="164.0" text="Room No." />
+                <TableColumn minWidth="0.0" prefWidth="192.0" text="Room Status" />
+                  <TableColumn prefWidth="207.0" text="Rental Rates" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </center>
