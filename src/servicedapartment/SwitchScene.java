@@ -10,13 +10,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SwitchScene {
+	
 	public void switchScene(ActionEvent event, String resourseFile) throws IOException {
-		Parent checkinView = FXMLLoader.load(getClass().getResource(resourseFile));
-		Scene checkinScene = new Scene(checkinView);
+		Parent view = FXMLLoader.load(getClass().getResource(resourseFile));
+		Scene scene = new Scene(view);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		
-		window.setScene(checkinScene);
+		window.setScene(scene);
 		window.show();
 	}
+	
 }

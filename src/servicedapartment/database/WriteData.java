@@ -2,9 +2,11 @@ package servicedapartment.database;
 
 import java.sql.*;
 
-import servicedapartment.Customer;
+import servicedapartment.customer.Customer;
+import servicedapartment.roomstate.Room;
 
 public class WriteData extends DataFactory{
+	
 	public void insertDataToCustomerLog(Customer customer) {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -13,11 +15,11 @@ public class WriteData extends DataFactory{
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				String data = "INSERT INTO Customer_log(ROOM_NUMBER, ROOM_TYPE, CUSTOMER_NAME, PHONE_NUMBER, EMAIL, STAY_FOR, CLIENTS_AMOUNT, CHECKIN_DATE, CHECKOUT_DATE, STATUS, TOTAL) "
-								+ "VALUES ( " + customer.getRoomNumb() + ", " + customer.getRoomType() + ", "
-								+ customer.getName() + ", " + customer.getPhone() + ", " + customer.getEmail() + ", "
-								+ Integer.toString(customer.getStay()) + customer.getStayUnit() + ", " + customer.getAmount() + ", "
-								+ Date.valueOf(customer.getCheckin()) + ", " + Date.valueOf(customer.getCheckout()) + ", "
-								+ customer.getStatus() + ", " + customer.getTotal() + ");";
+								+ "VALUES ( " + customer.getRoomInfo().getRoomNumb() + ", " + customer.getRoomInfo().getRoomType() + ", "
+								+ customer.getBasicInfo().getName() + ", " + customer.getBasicInfo().getPhone() + ", " + customer.getBasicInfo().getEmail() + ", "
+								+ Integer.toString(customer.getBasicInfo().getStay()) + customer.getBasicInfo().getStayUnit() + ", " + customer.getBasicInfo().getAmount() + ", "
+								+ Date.valueOf(customer.getBasicInfo().getCheckin()) + ", " + Date.valueOf(customer.getBasicInfo().getCheckout()) + ", "
+								+ customer.getRoomInfo().getStatus() + ", " + customer.getRoomInfo().getTotal() + ");";
 				stm.executeUpdate(data);
 				stm.close();
 				connect.commit();
@@ -28,7 +30,8 @@ public class WriteData extends DataFactory{
 		}
 	}
 	
-	public void updateStatus() {
-		
+	public void updateStatus(Room room) {
+		//if(ห้องว่าง) --> ไม่ว่าง แล้วอัพเดตใน database
+		//else vice versa
 	}
 }

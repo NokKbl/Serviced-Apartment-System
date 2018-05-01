@@ -1,10 +1,8 @@
-package servicedapartment;
+package servicedapartment.customer;
 
 import java.time.LocalDate;
 
-public class Customer {
-	private String roomNumb;
-	private String roomType;
+public class BasicInfo {
 	private String name;
 	private String phone;
 	private String email;
@@ -13,13 +11,9 @@ public class Customer {
 	private int amount;
 	private LocalDate checkin;
 	private LocalDate checkout;
-	private String status;
-	private int total;
 	
-	public Customer(String roomNumb, String roomType, String name, String phone, String email, int stay, 
-					String stayUnit, int amount, LocalDate checkin, LocalDate checkout, String status, int total) {
-		this.roomNumb = roomNumb;
-		this.roomType = roomType;
+	public BasicInfo(String name, String phone, String email, int stay, String stayUnit,
+			int amount, LocalDate checkin) {
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
@@ -27,19 +21,8 @@ public class Customer {
 		this.stayUnit = stayUnit;
 		this.amount = amount;
 		this.checkin = checkin;
-		this.checkout = checkout;
-		this.status = status;
-		this.total = total;
 	}
-
-	public String getRoomNumb() {
-		return this.roomNumb;
-	}
-
-	public String getRoomType() {
-		return this.roomType;
-	}
-
+	
 	public String getName() {
 		return this.name;
 	}
@@ -69,14 +52,10 @@ public class Customer {
 	}
 
 	public LocalDate getCheckout() {
+		if(this.stayUnit.equalsIgnoreCase("days")) this.checkout = this.checkin.plusDays(this.stay);
+		if(this.stayUnit.equalsIgnoreCase("weeks")) this.checkout = this.checkin.plusWeeks(this.stay);
+		if(this.stayUnit.equalsIgnoreCase("months")) this.checkout = this.checkin.plusMonths(this.stay);
+		else this.checkout = this.checkin.plusYears(this.stay);
 		return this.checkout;
-	}
-
-	public String getStatus() {
-		return this.status;
-	}
-
-	public int getTotal() {
-		return this.total;
 	}
 }
