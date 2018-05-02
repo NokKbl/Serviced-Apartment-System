@@ -1,23 +1,23 @@
 package servicedapartment.roomstate;
 
 public class Room {
-	private int roomNo;
+	private String roomNo;
 	private RoomState state;
 
-	public Room(int roomNo) {
+	public Room(String roomNo) {
 		this.roomNo = roomNo;
-		state = new OccupiedState();
+		state = null;
+	}
+	
+	public void setState(RoomState state) {
+		this.state = state;
 	}
 	
 	public RoomState getState() {
 		return this.state;
 	}
 
-	public void setState(RoomState state) {
-		this.state = state;
-	}
-
-	public int getRoomNo() {
+	public String getRoomNo() {
 		return this.roomNo;
 	}
 }

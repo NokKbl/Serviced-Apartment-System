@@ -7,10 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import servicedapartment.SwitchScene;
-import servicedapartment.customer.BasicInfo;
-import servicedapartment.customer.Customer;
-import servicedapartment.customer.RoomInfo;
-import servicedapartment.database.DataFactory;
+import servicedapartment.data.TypeInfo;
+import servicedapartment.data.CustomerInfo;
+import servicedapartment.data.RoomInfo;
+import servicedapartment.database.DatabaseFactory;
+import servicedapartment.roomstate.Room;
 
 public class CheckinSummaryController {
 	@FXML Label name;
@@ -26,20 +27,19 @@ public class CheckinSummaryController {
 	@FXML Label total;
 	@FXML Button checkin;
 	@FXML Button cancel;
-	private BasicInfo basicInfo;
+	private TypeInfo basicInfo;
 	private RoomInfo roomInfo;
+	private Room room;
 	private SwitchScene newScene = new SwitchScene();
-	private DataFactory factory = DataFactory.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	
-	public void initialize(BasicInfo basicInfo, RoomInfo roomInfo) {
+	public void initialize(TypeInfo basicInfo, RoomInfo roomInfo, Room room) {
 		this.basicInfo = basicInfo;
 		this.roomInfo = roomInfo;
-		//สร้าง Customer
-		//ใช้ method insert in WriteData
-		//เปลี่ยนสถานะห้องใน Database
+		this.room = room;
 	}
 	
-	public BasicInfo getBasicInfo() {
+	public TypeInfo getBasicInfo() {
 		return this.basicInfo;
 	}
 	
@@ -47,9 +47,18 @@ public class CheckinSummaryController {
 		return this.roomInfo;
 	}
 	
+	public Room getRoom() {
+		return this.room;
+	}
+	
 	public void handleCheckin(ActionEvent event) throws IOException {
-		Customer customer = new Customer(this.getBasicInfo(), this.getRoomInfo());
-		factory.insertDataToCustomerLog(customer);
+		//สร้าง Customer
+		//ใช้ method insert in WriteData
+		//เปลี่ยนสถานะห้องใน Database
+		
+		//CustomerInfo customer = new CustomerInfo(this.getBasicInfo(), this.getRoomInfo());
+		//factory.insertDataToCustomer(customer);
+		//factory.updateCheckin(this.getRoom(), customer.getBasicInfo().getName());
 		newScene.switchScene(event, "HomeUI.fxml");
 	}
 	

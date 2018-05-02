@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.checkin.CustomerInfoController">
+<BorderPane prefHeight="500.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.checkin.CustomerInfoController">
    <top>
       <Label text="BOOKING &amp; CHECK-IN" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -51,17 +51,6 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </TextField>
-            <Label text="Stay for">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="stay" prefHeight="37.0" prefWidth="65.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <ComboBox fx:id="units" prefHeight="27.0" prefWidth="95.0" />
             <Label text="No. of Customer:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
@@ -75,13 +64,32 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </TextField>
-            <Label text="Check-in Date:">
+            <Label text="No. of Days:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="20.0" />
+               </FlowPane.margin>
+            </Label>
+            <TextField fx:id="stay" prefHeight="37.0" prefWidth="65.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label text="Date In:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <DatePicker prefHeight="35.0" prefWidth="228.0" />
-            <Button fx:id="cancel" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0" text="Cancel">
+            <DatePicker fx:id="checkin" onAction="#handleCheckin" prefHeight="35.0" prefWidth="140.0" />
+            <Label text="Date Out:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="checkout" prefHeight="35.0" prefWidth="140.0" />
+            <Button fx:id="cancel" mnemonicParsing="false" onAction="#handleCancel" prefHeight="37.0" prefWidth="140.0" text="Cancel">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -89,7 +97,7 @@
                   <Insets right="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button fx:id="next" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0" text="Next">
+            <Button fx:id="next" mnemonicParsing="false" onAction="#handleNext" prefHeight="37.0" prefWidth="140.0" text="Next">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

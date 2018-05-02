@@ -4,8 +4,7 @@ public class OccupiedState implements RoomState{
 
 	@Override
 	public void checkState(Room room) {
-		// TODO Auto-generated method stub
-		
+		room.setState(this);
 	}
 	
 	@Override
