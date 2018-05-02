@@ -36,8 +36,9 @@ public class OrderInfo {
 		return pTotal;
 	}
 
-	public boolean isPaid() {
-		return isPaid;
+	public int isPaid() {
+		if(isPaid == true) return 1;
+		return 0;
 	}
 
 	public int getDaysStay() {

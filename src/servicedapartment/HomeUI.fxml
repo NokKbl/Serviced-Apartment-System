@@ -44,7 +44,7 @@
                         <Font name="Comic Sans MS" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="checkout" mnemonicParsing="false" prefHeight="42.0" prefWidth="250.0" text="Check out">
+                  <Button fx:id="checkout" mnemonicParsing="false" onAction="#handleCheckOut" prefHeight="42.0" prefWidth="250.0" text="Check out">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </VBox.margin>
@@ -57,7 +57,7 @@
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="admin" mnemonicParsing="false" prefHeight="42.0" prefWidth="360.0" text="Data and Preferences...">
+                  <Button fx:id="admin" mnemonicParsing="false" onAction="#handleAdmin" prefHeight="42.0" prefWidth="360.0" text="Data and Preferences...">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>

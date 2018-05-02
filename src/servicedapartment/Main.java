@@ -1,10 +1,13 @@
 package servicedapartment;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import servicedapartment.data.CustomerInfo;
+import servicedapartment.data.OrderInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.database.DatabaseFactory;
@@ -33,9 +36,9 @@ public class Main extends Application {
 		factory.createDatabase("CustomerLog.db");
 		
 		TypeInfo typeStd = new TypeInfo("Studio", 2000, 12000, 45000);
-		TypeInfo typeOne = new TypeInfo("1 Bedroom", 2800, 16800, 59000);
-		TypeInfo typeTwo = new TypeInfo("2 Bedroom", 4300, 25800, 92000);
-		TypeInfo typeThr = new TypeInfo("3 Bedroom", 5800, 34800, 122000);
+		TypeInfo typeOne = new TypeInfo("1-Bedroom", 2800, 16800, 59000);
+		TypeInfo typeTwo = new TypeInfo("2-Bedroom", 4300, 25800, 92000);
+		TypeInfo typeThr = new TypeInfo("3-Bedroom", 5800, 34800, 122000);
 		factory.insertDataToTypes(typeStd);
 		factory.insertDataToTypes(typeOne);
 		factory.insertDataToTypes(typeTwo);

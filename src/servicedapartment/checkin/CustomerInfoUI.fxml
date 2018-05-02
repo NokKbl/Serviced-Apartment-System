@@ -18,100 +18,90 @@
          </font>
       </Label>
    </top>
-   <center>
-      <FlowPane alignment="CENTER" hgap="10.0" prefHeight="381.0" prefWidth="560.0" vgap="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Customer name:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="name" prefHeight="37.0" prefWidth="340.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label text="Phone number:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="phone" prefHeight="37.0" prefWidth="329.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label text="E-mail:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="email" prefHeight="37.0" prefWidth="396.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label text="No. of Customer:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets left="10.0" />
-               </FlowPane.margin>
-            </Label>
-            <TextField fx:id="amount" prefHeight="37.0" prefWidth="65.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label text="No. of Days:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets left="20.0" />
-               </FlowPane.margin>
-            </Label>
-            <TextField fx:id="stay" prefHeight="37.0" prefWidth="65.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label text="Date In:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="checkin" onAction="#handleCheckin" prefHeight="35.0" prefWidth="140.0" />
-            <Label text="Date Out:">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="checkout" prefHeight="35.0" prefWidth="140.0" />
-            <Button fx:id="cancel" mnemonicParsing="false" onAction="#handleCancel" prefHeight="37.0" prefWidth="140.0" text="Cancel">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets right="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button fx:id="next" mnemonicParsing="false" onAction="#handleNext" prefHeight="37.0" prefWidth="140.0" text="Next">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-               <FlowPane.margin>
-                  <Insets left="10.0" />
-               </FlowPane.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
-         </padding>
-      </FlowPane>
-   </center>
    <padding>
       <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
    </padding>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="23.0" layoutY="31.0" text="Customer name:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" layoutX="163.0" layoutY="25.0" prefHeight="37.0" prefWidth="364.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="26.0" layoutY="78.0" text="Phone number:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phone" layoutX="156.0" layoutY="72.0" prefHeight="37.0" prefWidth="371.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="29.0" layoutY="130.0" text="E-mail:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email" layoutX="94.0" layoutY="124.0" prefHeight="37.0" prefWidth="432.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="149.0" layoutY="174.0" text="No. of Customer:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="amount" alignment="CENTER" layoutX="312.0" layoutY="168.0" prefHeight="37.0" prefWidth="65.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="29.0" layoutY="222.0" text="No. of Days:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="stay" alignment="CENTER" layoutX="143.0" layoutY="216.0" prefHeight="37.0" prefWidth="65.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="286.0" layoutY="222.0" text="Date Out:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="checkout" layoutX="377.0" layoutY="217.0" prefHeight="35.0" prefWidth="140.0" />
+            <Label layoutX="240.0" layoutY="222.0" text="or">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="163.0" layoutY="272.0" text="Date In:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="checkin" layoutX="249.0" layoutY="267.0" onAction="#handleCheckin" prefHeight="35.0" prefWidth="161.0" />
+            <Button fx:id="cancel" layoutX="123.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="37.0" prefWidth="150.0" text="Cancel">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="next" layoutX="300.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleNext" prefHeight="37.0" prefWidth="140.0" text="Next">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
