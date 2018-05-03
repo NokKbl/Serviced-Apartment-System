@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.AdminChoicesController">
    <center>
       <VBox alignment="CENTER" prefHeight="355.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,12 +18,12 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="580.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="255.0" text="Edit Rental Rates">
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEdit" prefHeight="55.0" prefWidth="255.0" text="Edit Rental Rates">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="255.0" text="Add Building Blocks">
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" prefHeight="55.0" prefWidth="255.0" text="Add Building Blocks">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
@@ -37,19 +37,19 @@
             </Label>
             <HBox alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="65.0" prefWidth="580.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="255.0" text="View Customer History">
+                  <Button fx:id="historyButton" mnemonicParsing="false" onAction="#handleHistory" prefHeight="55.0" prefWidth="255.0" text="View Customer History">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="255.0" text="View Room Status">
+                  <Button fx:id="statusButton" mnemonicParsing="false" onAction="#handleRoomStatus" prefHeight="55.0" prefWidth="255.0" text="View Room Status">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Log out">
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" text="Log out">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

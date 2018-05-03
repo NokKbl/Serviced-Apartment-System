@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.EditRatesController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="550.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -39,17 +39,17 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="studioDaily" layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="onebrrDaily" layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="twobrrDaily" layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -84,7 +84,7 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="threebrrDaily" layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -127,17 +127,17 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="studioWeekly" layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="onebrrWeekly" layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="twobrrWeekly" layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -172,7 +172,7 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="threebrrWeekly" layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -215,17 +215,17 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="studioMonthly" layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="onebrrMonthly" layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </TextField>
-                              <TextField layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="twobrrMonthly" layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -260,7 +260,7 @@
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
+                              <TextField fx:id="threebrrMonthly" layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
@@ -288,11 +288,11 @@
             </TabPane>
             <FlowPane alignment="CENTER" hgap="20.0" prefHeight="70.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Save">
+                  <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Save">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Back">
+                  <Button fx:id="backButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Back">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font></Button>

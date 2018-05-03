@@ -149,6 +149,7 @@ public class DatabaseFactory {
 		}
 	}
 	
+<<<<<<< Updated upstream
 	public List<RoomInfo> readDataFromRoom() {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		List<RoomInfo> allRoomInfo = new ArrayList<>();
@@ -178,5 +179,40 @@ public class DatabaseFactory {
 		}
 		return allRoomInfo;
 	}
+=======
+	public List<TypeInfo> readDataFromRoomType() {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		List<TypeInfo> list = new ArrayList<>();
+		try (Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm =connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT * FROM Room_Types;");
+				
+				while(rs.next()) {
+					String roomType = rs.getString("room_type");
+					int pDays = rs.getInt("price_day");
+					int pWeeks = rs.getInt("price_week");
+					int pMonths = rs.getInt("price_month");
+					
+					TypeInfo type = new TypeInfo(roomType, pDays, pWeeks, pMonths);
+					
+					list.add(type);
+				}
+				
+				rs.close();
+				connect.commit();
+				connect.close();
+				stm.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return list;
+	}
+	
+	
+>>>>>>> Stashed changes
 	
 }
