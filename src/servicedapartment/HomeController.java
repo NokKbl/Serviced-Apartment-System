@@ -36,6 +36,6 @@ public class HomeController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleAdmin(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "checkin/LoginUI.fxml");
+		newScene.switchScene(event, "dataandpreferences/LoginUI.fxml");
 	}
 }

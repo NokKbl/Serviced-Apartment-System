@@ -51,33 +51,18 @@
                 <TableColumn fx:id="roomStatus" minWidth="0.0" prefWidth="192.0" text="Room Status" />
               </columns>
             </TableView>
-            <Label layoutX="396.0" layoutY="172.0" text="Rental Rate:">
-               <font>
-                  <Font name="Comic Sans MS" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="421.0" layoutY="230.0" text="THB">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="roomRates" layoutX="468.0" layoutY="230.0" text="Label">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="64.0" prefWidth="627.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="cancel" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Cancel">
+            <Button fx:id="cancel" mnemonicParsing="false" onAction="#handleCancel" prefHeight="37.0" prefWidth="115.0" text="Cancel">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="next" mnemonicParsing="false" prefHeight="37.0" prefWidth="115.0" text="Next">
+            <Button fx:id="next" mnemonicParsing="false" onAction="#passInfo" prefHeight="37.0" prefWidth="115.0" text="Next">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

@@ -1,13 +1,7 @@
 package servicedapartment;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
-import servicedapartment.data.CustomerInfo;
-import servicedapartment.data.OrderInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.database.DatabaseFactory;

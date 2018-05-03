@@ -1,6 +1,8 @@
 package servicedapartment.checkin;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,28 +21,43 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
+import servicedapartment.database.DatabaseFactory;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.roomstate.Room;
 
 public class RoomandPaymentController {
 	@FXML ComboBox<String> roomTypes;
-	@FXML TableView<Room> table;
-	@FXML TableColumn<Room, String> roomNumb;
-	@FXML TableColumn<Room, String> roomStatus;
+	@FXML TableView<RoomInfo> table;
+	@FXML TableColumn<RoomInfo, String> roomNumb;
+	@FXML TableColumn<RoomInfo, String> roomStatus;
 	@FXML Label roomRates;
 	@FXML RadioButton cash;
 	@FXML RadioButton credit;
 	@FXML Button next;
 	@FXML Button cancel;
-	private CustomerInfo customerInfo;
 	private SwitchScene newScene = new SwitchScene();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
+	private CustomerInfo customerInfo;
+	private int stay, amount;
+	private LocalDate checkin, checkout;
+	private String unit;
 	
-	public void initialize(CustomerInfo customerInfo) {
+	public void initialize(CustomerInfo customerInfo, int stay, int amount, LocalDate checkin, LocalDate checkout, String unit) {
 		this.customerInfo = customerInfo;
+		this.stay = stay;
+		this.amount = amount;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.unit = unit;
 		String[] types = {"Studio", "1-Bedroom", "2-Bedroom", "3-Bedroom"};
 		roomTypes.getItems().addAll(types);
 		roomTypes.getSelectionModel().select(0);
+		
+		List<RoomInfo> baseInfo = factory.readDataFromRoom();
+		
+		roomNumb
+		roomStatus
 		
 //		if(basicInfo.getStayUnit().equalsIgnoreCase("days")) {
 //			//ตาราง1 อ่านเลขห้องจาก adminlog
@@ -58,10 +75,36 @@ public class RoomandPaymentController {
 		return this.customerInfo;
 	}
 	
-	public int calculateTotal(int stay, String rate, String stayUnit) {
-		int total = stay * Integer.parseInt(rate);
+	public int getStay() {
+		return stay;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public LocalDate getCheckin() {
+		return checkin;
+	}
+
+	public LocalDate getCheckout() {
+		return checkout;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public int calculateTotal(int stay, int rate, String stayUnit) {
+		double calStay;
+		if(stay >= 365) calStay = stay/365;
+		else if (stay >= 30) calStay = stay/30;
+		else if (stay >= 7) calStay = stay/7;
+		else calStay = stay;
+		
+		double total = calStay * rate;
 		if(stayUnit.equals("years")) total = total*12;
-		return total;
+		return (int) total;
 	}
 	
 	public void handleType(ActionEvent event) {
@@ -76,7 +119,7 @@ public class RoomandPaymentController {
 		}
 	}
 	
-	public void passInfo(ActionEvent event) throws IOException {
+//	public void passInfo(ActionEvent event) throws IOException {
 //		RoomInfo roomI = table.getSelectionModel().getSelectedItem();
 //		
 //		if(room.getState().toString().equalsIgnoreCase("Vacant")) {
@@ -99,7 +142,7 @@ public class RoomandPaymentController {
 //			alert.setContentText("Room " + room.getRoomNo() + " is on 'Occupied' state. Please choose another room with 'Vacant' state.");
 //			alert.showAndWait();
 //		}
-	}
+//	}
 	
 	public void handleCancel(ActionEvent event) throws IOException {
 		newScene.switchScene(event, "HomeUI.fxml");

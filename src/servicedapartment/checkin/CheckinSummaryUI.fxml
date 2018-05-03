@@ -26,11 +26,6 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="175.0" text="Change Room">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Button>
             <Button fx:id="cancel" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="Cancel">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
@@ -166,7 +161,7 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="627.0" layoutY="271.0" text="Label">
+            <Label layoutX="627.0" layoutY="271.0" text="days">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

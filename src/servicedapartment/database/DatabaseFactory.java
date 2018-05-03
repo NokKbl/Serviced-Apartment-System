@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
@@ -100,7 +102,8 @@ public class DatabaseFactory {
 				connect.close();
 			}
 		} catch(SQLException e) {
-			System.err.println("can't insert data");
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -146,6 +149,34 @@ public class DatabaseFactory {
 		}
 	}
 	
-	
+	public List<RoomInfo> readDataFromRoom() {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		List<RoomInfo> allRoomInfo = new ArrayList<>();
+		RoomInfo roomInfo = null;
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			System.out.println("open db success");
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT * FROM Rooms;");
+				
+				while(rs.next()) {
+					String roomN = rs.getString("ROOM_NUMBER");
+					int typeID = rs.getInt("TYPE_ID");
+					int customerID = rs.getInt("CUSTOMER_ID");
+					roomInfo = new RoomInfo(roomN, typeID, customerID);
+					allRoomInfo.add(roomInfo);
+				}
+				
+				rs.close();
+				stm.close();
+				connect.close();
+			}
+		} catch(SQLException e) {
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
+		}
+		return allRoomInfo;
+	}
 	
 }
