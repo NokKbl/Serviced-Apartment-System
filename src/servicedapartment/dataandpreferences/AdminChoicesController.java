@@ -12,7 +12,7 @@ public class AdminChoicesController {
 	@FXML
 	Button editButton;
 	@FXML
-	Button addButton;
+	Button roomButton;
 	@FXML
 	Button historyButton;
 	@FXML
@@ -26,8 +26,8 @@ public class AdminChoicesController {
 		newScene.switchScene(event, "dataandpreferences/EditRatesUI.fxml");
 	}
 	
-	public void handleAdd(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/AddRoomsUI.fxml");
+	public void handleEditRoom(ActionEvent event) throws IOException {
+		newScene.switchScene(event, "dataandpreferences/EditRoomsUI.fxml");
 	}
 	
 	public void handleHistory(ActionEvent event) throws IOException {

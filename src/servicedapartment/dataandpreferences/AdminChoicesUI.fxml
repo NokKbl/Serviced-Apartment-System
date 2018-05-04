@@ -23,9 +23,9 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" prefHeight="55.0" prefWidth="255.0" text="Add Building Blocks">
+                  <Button fx:id="roomButton" mnemonicParsing="false" onAction="#handleEditRoom" prefHeight="55.0" prefWidth="255.0" text="Add/Remove Building Blocks">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="17.0" />
                      </font>
                   </Button>
                </children>

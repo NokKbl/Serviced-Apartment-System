@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane prefHeight="406.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane prefHeight="406.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.EditRoomController">
    <top>
-      <Label text="Add Rooms" BorderPane.alignment="CENTER">
+      <Label text="Add/Remove Rooms" BorderPane.alignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
@@ -22,11 +21,6 @@
    <center>
       <AnchorPane prefHeight="266.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="32.0" layoutY="31.0" text="Add:">
-               <font>
-                  <Font name="Comic Sans MS" size="24.0" />
-               </font>
-            </Label>
             <Label layoutX="109.0" layoutY="36.0" text="Studio Room">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
@@ -42,17 +36,17 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
+            <TextField fx:id="stdField" layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
+            <TextField fx:id="onebrField" layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
+            <TextField fx:id="twobrField" layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -72,7 +66,7 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
+            <TextField fx:id="threebrField" layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -93,12 +87,17 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefWidth="130.0" text="Add">
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" prefWidth="130.0" text="Add">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="130.0" text="Back">
+            <Button fx:id="removeButton" mnemonicParsing="false" onAction="#handleRemove" prefWidth="130.0" text="Remove">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack" prefWidth="130.0" text="Back">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
