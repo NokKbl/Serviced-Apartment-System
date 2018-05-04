@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.checkout.CheckoutController">
    <top>
       <Label text="CHECKOUT" BorderPane.alignment="CENTER">
          <font>
@@ -34,12 +34,12 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </TextField>
-            <Button layoutX="306.0" layoutY="295.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Back">
+            <Button fx:id="back" layoutX="306.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="37.0" prefWidth="130.0" text="Back">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="118.0" layoutY="295.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Checkout">
+            <Button fx:id="checkoutB" layoutX="118.0" layoutY="295.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Checkout">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

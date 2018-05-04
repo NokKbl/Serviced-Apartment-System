@@ -39,8 +39,8 @@ public class CustomerInfoController {
 		CustomerInfo customerInfo = new CustomerInfo(name.getText(), phone.getText(), email.getText());
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("checkin/RoomandPaymentUI.fxml"));
-		Parent view = loader.load();
+		loader.setLocation(getClass().getResource("../checkin/RoomandPaymentUI.fxml"));
+		Parent view = (Parent) loader.load();
 		Scene scene = new Scene(view);
 		
 		RoomandPaymentController controller = loader.getController();

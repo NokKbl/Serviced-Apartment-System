@@ -80,6 +80,7 @@ public class DatabaseFactory {
 				stm.close();
 				connect.commit();
 				connect.close();
+				System.out.println("write customer success");
 			}
 		} catch(SQLException e) {
 			//System.err.println("can't insert data");
@@ -131,7 +132,7 @@ public class DatabaseFactory {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open db success");
+			System.out.println("open order success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, TOTAL_PRICE, IS_PAID, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT) "
@@ -142,6 +143,7 @@ public class DatabaseFactory {
 				stm.close();
 				connect.commit();
 				connect.close();
+				System.out.println("write order success");
 			}
 		} catch(SQLException e) {
 			//System.err.println("can't insert data");
@@ -149,14 +151,13 @@ public class DatabaseFactory {
 		}
 	}
 	
-<<<<<<< Updated upstream
 	public List<RoomInfo> readDataFromRoom() {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		List<RoomInfo> allRoomInfo = new ArrayList<>();
 		RoomInfo roomInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open db success");
+			System.out.println("open room table success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM Rooms;");
@@ -172,6 +173,7 @@ public class DatabaseFactory {
 				rs.close();
 				stm.close();
 				connect.close();
+				System.out.println("read room success");
 			}
 		} catch(SQLException e) {
 			//System.err.println("can't insert data");
@@ -179,31 +181,32 @@ public class DatabaseFactory {
 		}
 		return allRoomInfo;
 	}
-=======
+	
 	public List<TypeInfo> readDataFromRoomType() {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		List<TypeInfo> list = new ArrayList<>();
+		TypeInfo type = null;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
+			System.out.println("open type table success");
 			if(connect != null) {
-				Statement stm =connect.createStatement();
+				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM Room_Types;");
 				
 				while(rs.next()) {
-					String roomType = rs.getString("room_type");
-					int pDays = rs.getInt("price_day");
-					int pWeeks = rs.getInt("price_week");
-					int pMonths = rs.getInt("price_month");
-					
-					TypeInfo type = new TypeInfo(roomType, pDays, pWeeks, pMonths);
-					
+					String roomType = rs.getString("ROOM_TYPE");
+					int pDays = rs.getInt("PRICE_DAY");
+					int pWeeks = rs.getInt("PRICE_WEEK");
+					int pMonths = rs.getInt("PRICE_MONTH");
+					type = new TypeInfo(roomType, pDays, pWeeks, pMonths);
 					list.add(type);
 				}
 				
 				rs.close();
-				connect.commit();
-				connect.close();
+				//connect.commit();
 				stm.close();
+				connect.close();
+				System.out.println("read type success");
 			}
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
@@ -212,7 +215,66 @@ public class DatabaseFactory {
 		return list;
 	}
 	
+	public int getCustomerID(String customerName) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		int id = 0;
+		try (Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm =connect.createStatement();
+				String data = "SELECT CUSTOMER_ID FROM Customers WHERE CUSTOMER_NAME = '" + customerName + "';"; 
+				ResultSet rs = stm.executeQuery(data);
+				id = rs.getInt("CUSTOMER_ID");
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+	}
 	
->>>>>>> Stashed changes
+	public int getRoomID(String roomNumber) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		int id = 0;
+		try (Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm =connect.createStatement();
+				String data = "SELECT ROOM_ID FROM Rooms WHERE ROOM_NUMBER = '" + roomNumber + "';"; 
+				ResultSet rs = stm.executeQuery(data);
+				id = rs.getInt("ROOM_ID");
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+	}
+	
+	public void updateCustomerIDInRoom(String roomNb, int customerID) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			System.out.println("open db success");
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				String data = "UPDATE Rooms SET CUSTOMER_ID = " + customerID + " WHERE ROOM_NUMBER = '" + roomNb + "';";
+				stm.executeUpdate(data);
+				stm.close();
+				connect.commit();
+				connect.close();
+				System.out.println("update customerID success");
+			}
+		} catch(SQLException e) {
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
+		}
+	}
 	
 }

@@ -44,7 +44,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <ComboBox fx:id="roomTypes" layoutX="417.0" layoutY="105.0" prefHeight="34.0" prefWidth="173.0" />
+            <ComboBox fx:id="roomTypes" layoutX="417.0" layoutY="105.0" onAction="#handleType" prefHeight="34.0" prefWidth="173.0" />
             <TableView fx:id="table" layoutX="21.0" layoutY="26.0" prefHeight="406.0" prefWidth="356.0">
               <columns>
                 <TableColumn fx:id="roomNumb" prefWidth="164.0" text="Room No." />
@@ -62,7 +62,7 @@
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="next" mnemonicParsing="false" onAction="#passInfo" prefHeight="37.0" prefWidth="115.0" text="Next">
+            <Button fx:id="next" mnemonicParsing="false" onAction="#handleNext" prefHeight="37.0" prefWidth="115.0" text="Next">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
