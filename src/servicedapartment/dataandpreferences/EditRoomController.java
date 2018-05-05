@@ -77,7 +77,7 @@ public class EditRoomController {
 		}
 		
 		if(!field.isEmpty()) {
-			RoomInfo addRoom = new RoomInfo(field, typeId, 0);
+			RoomInfo addRoom = new RoomInfo(field, typeId);
 			factory.insertDataToRooms(addRoom);
 			view.run();
 			
@@ -115,7 +115,7 @@ public class EditRoomController {
 		}
 		
 		if(!field.isEmpty()) {
-			RoomInfo delRoom = new RoomInfo(field, typeId, 0);
+			RoomInfo delRoom = new RoomInfo(field, typeId);
 			factory.deleteDataFromRoom(delRoom);
 			view.run();
 			
