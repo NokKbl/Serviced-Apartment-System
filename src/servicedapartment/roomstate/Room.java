@@ -1,11 +1,11 @@
 package servicedapartment.roomstate;
 
 public class Room {
-	private String roomNo;
+	//private String roomNo;
 	private RoomState state;
 
 	public Room(String roomNo) {
-		this.roomNo = roomNo;
+		//this.roomNo = roomNo;
 		state = null;
 	}
 	
@@ -17,7 +17,7 @@ public class Room {
 		return this.state;
 	}
 
-	public String getRoomNo() {
-		return this.roomNo;
-	}
+//	public String getRoomNo() {
+//		return this.roomNo;
+//	}
 }

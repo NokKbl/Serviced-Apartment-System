@@ -47,6 +47,7 @@ public class Main extends Application {
 			factory.insertDataToTypes(typeTwo);
 			factory.insertDataToTypes(typeThr);
 		
+<<<<<<< Updated upstream
 			RoomInfo rooms1 = new RoomInfo("101", 1, 0);
 			RoomInfo rooms2 = new RoomInfo("102", 1, 0);
 			RoomInfo rooms3 = new RoomInfo("103", 1, 0);
@@ -72,6 +73,32 @@ public class Main extends Application {
 			factory.insertDataToRooms(roomh2);
 			factory.insertDataToRooms(roomh3);
 		}
+=======
+		RoomInfo rooms1 = new RoomInfo("101", 1);
+		RoomInfo rooms2 = new RoomInfo("102", 1);
+		RoomInfo rooms3 = new RoomInfo("103", 1);
+		RoomInfo roomo1 = new RoomInfo("201", 2);
+		RoomInfo roomo2 = new RoomInfo("202", 2);
+		RoomInfo roomo3 = new RoomInfo("203", 2);
+		RoomInfo roomw1 = new RoomInfo("301", 3);
+		RoomInfo roomw2 = new RoomInfo("302", 3);
+		RoomInfo roomw3 = new RoomInfo("303", 3);
+		RoomInfo roomh1 = new RoomInfo("401", 4);
+		RoomInfo roomh2 = new RoomInfo("402", 4);
+		RoomInfo roomh3 = new RoomInfo("403", 4);
+		factory.insertDataToRooms(rooms1);
+		factory.insertDataToRooms(rooms2);
+		factory.insertDataToRooms(rooms3);
+		factory.insertDataToRooms(roomo1);
+		factory.insertDataToRooms(roomo2);
+		factory.insertDataToRooms(roomo3);
+		factory.insertDataToRooms(roomw1);
+		factory.insertDataToRooms(roomw2);
+		factory.insertDataToRooms(roomw3);
+		factory.insertDataToRooms(roomh1);
+		factory.insertDataToRooms(roomh2);
+		factory.insertDataToRooms(roomh3);
+>>>>>>> Stashed changes
 		
 		launch(args);
 	}

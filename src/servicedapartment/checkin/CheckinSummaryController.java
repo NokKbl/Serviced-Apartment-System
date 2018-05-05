@@ -66,9 +66,10 @@ public class CheckinSummaryController {
 	public void handleCheckin(ActionEvent event) throws IOException {
 		factory.insertDataToCustomers(customerInfo);
 		int custmId = factory.getCustomerID(customerInfo.getName());
-		factory.updateCustomerIDInRoom(roomInfo.getRoomNumb(), custmId);
+		//factory.updateCustomerIDInRoom(roomInfo.getRoomNumb(), custmId);
 		int roomID = factory.getRoomID(roomInfo.getRoomNumb());
-		OrderInfo orderInfo = new OrderInfo(roomID, custmId, totalP, true, stayD, people, dayIn, dayOut);
+		System.out.println(dayIn);
+		OrderInfo orderInfo = new OrderInfo(roomID, custmId, totalP, stayD, people, dayIn, dayOut);
 		factory.insertDataToOrders(orderInfo);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);

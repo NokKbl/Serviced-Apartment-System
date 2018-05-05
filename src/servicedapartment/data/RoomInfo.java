@@ -3,12 +3,12 @@ package servicedapartment.data;
 public class RoomInfo {
 	private String roomNumb;
 	private int typeId;
-	private int customerId;
+	//private int customerId;
 	
-	public RoomInfo(String roomNumb, int typeId, int customerId) {
+	public RoomInfo(String roomNumb, int typeId) {
 		this.roomNumb = roomNumb;
 		this.typeId = typeId;
-		this.customerId = customerId;
+		//this.customerId = customerId;
 	}
 
 	public String getRoomNumb() {
@@ -19,8 +19,8 @@ public class RoomInfo {
 		return typeId;
 	}
 
-	public int getCustomerId() {
-		return customerId;
-	}
+//	public int getCustomerId() {
+//		return customerId;
+//	}
 	
 }

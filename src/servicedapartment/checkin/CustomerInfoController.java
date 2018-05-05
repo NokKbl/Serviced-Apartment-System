@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -29,6 +30,26 @@ public class CustomerInfoController {
 	@FXML Button cancel;
 	private SwitchScene newScene = new SwitchScene();
 	private String units;
+	
+	public void initialize() {
+		checkin.setDayCellFactory(picker -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate date, boolean empty) {
+				super.updateItem(date, empty);
+				LocalDate td = LocalDate.now();
+				setDisable(empty || date.compareTo(td) < 0);
+			}
+	    });
+		
+		checkout.setDayCellFactory(picker -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate date, boolean empty) {
+				super.updateItem(date, empty);
+				LocalDate td = LocalDate.now();
+				setDisable(empty || date.compareTo(td) < 0);
+			}
+	    });
+	}
 	
 	public void handleNext(ActionEvent event) throws IOException {
 		if(Integer.parseInt(stay.getText()) >= 365) this.units = "years";

@@ -6,11 +6,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
+import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
 
@@ -37,8 +39,7 @@ public class DatabaseFactory {
 				String sqlRoom = "CREATE TABLE Rooms "
 										+ "(ROOM_ID			INTEGER PRIMARY KEY,"
 										+ "ROOM_NUMBER		VARCHAR(5),"
-										+ "TYPE_ID			INT,"
-										+ "CUSTOMER_ID		INT);";
+										+ "TYPE_ID			INT);";
 				String sqlType = "CREATE TABLE Room_Types "
 										+ "(TYPE_ID			INTEGER PRIMARY KEY,"
 										+ "ROOM_TYPE		VARCHAR(10),"
@@ -49,16 +50,23 @@ public class DatabaseFactory {
 										+ "(ORDER_ID		INTEGER PRIMARY KEY,"
 										+ "ROOM_ID			INT,"
 										+ "CUSTOMER_ID		INT,"
+										+ "PAYMENT_ID		INT,"
 										+ "TOTAL_PRICE		INT,"
-										+ "IS_PAID			BOOLEAN	NOT NULL CHECK (IS_PAID IN (0,1)),"
 										+ "DAYS_STAY		INT,"
 										+ "PEOPLE			INT,"
-										+ "DAY_IN			DATE,"
-										+ "DAY_OUT			DATE);";
+										+ "DAY_IN			TEXT,"
+										+ "DAY_OUT			TEXT);";
+				String sqlPayment = "CREATE TABLE Payments "
+										+ "(PAYMENT_ID		INTEGER PRIMARY KEY,"
+										+ "DAY_PAID			TEXT,"
+										+ "AMOUNT_PAID		INT,"
+										+ "PAYMENT_TYPE		TEXT,"
+										+ "TRANSACTION_CODE	TEXT);";
 				stm.executeUpdate(sqlCustomer);
 				stm.executeUpdate(sqlRoom);
 				stm.executeUpdate(sqlType);
 				stm.executeUpdate(sqlOrder);
+				stm.executeUpdate(sqlPayment);
 				stm.close();
 				connect.close();
 			}
@@ -95,8 +103,8 @@ public class DatabaseFactory {
 			System.out.println("open db success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID, CUSTOMER_ID) "
-								+ "VALUES ('" + room.getRoomNumb() + "', " + room.getTypeId() + ", " + room.getCustomerId() + ");";
+				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID) "
+								+ "VALUES ('" + room.getRoomNumb() + "', " + room.getTypeId() + ");";
 				stm.executeUpdate(data);
 				stm.close();
 				connect.commit();
@@ -135,10 +143,32 @@ public class DatabaseFactory {
 			System.out.println("open order success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, TOTAL_PRICE, IS_PAID, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT) "
-								+ "VALUES (" + order.getRoomId() + ", " + order.getCustomerId() + ", " + order.getpTotal() + ", "
-								+ order.isPaid() + ", " + order.getDaysStay() + ", " + order.getPeople() + ", " + Date.valueOf(order.getDayIn()) + ", "
-								+ Date.valueOf(order.getDayOut()) + ");";
+				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, PAYMENT_ID, TOTAL_PRICE, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT) "
+								+ "VALUES (" + order.getRoomId() + ", " + order.getCustomerId() + ", " + order.getPaymentId() + ", "
+								+ order.getpTotal() + ", " + order.getDaysStay() + ", " + order.getPeople() + ", '"
+								+ order.getDayIn().toString() + "', '" + order.getDayOut().toString() + "');";
+				stm.executeUpdate(data);
+				stm.close();
+				connect.commit();
+				connect.close();
+				System.out.println("write order success");
+			}
+		} catch(SQLException e) {
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void insertDataToPayment(PaymentInfo payment) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			System.out.println("open order success");
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_CODE) "
+								+ "VALUES ('" + payment.getDayPaid().toString() + "', " + payment.getAmountPaid() + ", '" 
+								+ payment.getPmType() + "', '" + payment.getTrsCode() + "');";
 				stm.executeUpdate(data);
 				stm.close();
 				connect.commit();
@@ -165,8 +195,8 @@ public class DatabaseFactory {
 				while(rs.next()) {
 					String roomN = rs.getString("ROOM_NUMBER");
 					int typeID = rs.getInt("TYPE_ID");
-					int customerID = rs.getInt("CUSTOMER_ID");
-					roomInfo = new RoomInfo(roomN, typeID, customerID);
+					//int customerID = rs.getInt("CUSTOMER_ID");
+					roomInfo = new RoomInfo(roomN, typeID);
 					allRoomInfo.add(roomInfo);
 				}
 				
@@ -203,7 +233,6 @@ public class DatabaseFactory {
 				}
 				
 				rs.close();
-				//connect.commit();
 				stm.close();
 				connect.close();
 				System.out.println("read type success");
@@ -215,6 +244,42 @@ public class DatabaseFactory {
 		return list;
 	}
 	
+	public List<OrderInfo> readDataFromOrder(){
+		String url = "jdbc:sqlite:CustomerLog.db";
+		List<OrderInfo> allOrders = new ArrayList<>();
+		OrderInfo orderInfo = null;
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			System.out.println("open orders table success");
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT * FROM Orders;");
+				
+				while(rs.next()) {
+					int rId = rs.getInt("ROOM_ID");
+					int ctmId = rs.getInt("CUSTOMER_ID");
+					int pmId = rs.getInt("PAYMENT_ID");
+					int totalP = rs.getInt("TOTAL_PRICE");
+					int dStay = rs.getInt("DAYS_STAY");
+					int people = rs.getInt("PEOPLE");
+					String dIn = rs.getString("DAY_IN");
+					String dOut = rs.getString("DAY_OUT");
+					orderInfo = new OrderInfo(rId, ctmId, pmId, totalP, dStay, people, LocalDate.parse(dIn), LocalDate.parse(dOut));
+					allOrders.add(orderInfo);
+				}
+				
+				rs.close();
+				stm.close();
+				connect.close();
+				System.out.println("read orders success");
+			}
+		} catch(SQLException e) {
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
+		}
+		return allOrders;
+	}
+
 	public int getCustomerID(String customerName) {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
@@ -258,6 +323,7 @@ public class DatabaseFactory {
 	}
 	
 	public void updateCustomerIDInRoom(String roomNb, int customerID) {
+		//gonna delete it
 		String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -311,6 +377,35 @@ public class DatabaseFactory {
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public List<String[]> getDayIO(int roomID){
+		String url = "jdbc:sqlite:CustomerLog.db";
+		List<String[]> dateIO = new ArrayList<>();
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			//System.out.println("open room table success");
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT DAY_IN, DAY_OUT FROM Orders WHERE ROOM_ID = " + roomID + ";");
+				
+				while(rs.next()) {
+					String dIn = rs.getString("DAY_IN");
+					String dOut = rs.getString("DAY_OUT");
+					String[] dates = {dIn, dOut};
+					dateIO.add(dates);
+				}
+				
+				rs.close();
+				stm.close();
+				connect.close();
+				System.out.println("read day success");
+			}
+		} catch(SQLException e) {
+			//System.err.println("can't insert data");
+			System.out.println(e.getMessage());
+		}
+		return dateIO;
 	}
 	
 }
