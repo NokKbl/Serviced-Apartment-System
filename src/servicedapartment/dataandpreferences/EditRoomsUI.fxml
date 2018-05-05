@@ -21,62 +21,14 @@
    <center>
       <AnchorPane prefHeight="266.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="109.0" layoutY="36.0" text="Studio Room">
+            <Label layoutX="124.0" layoutY="60.0" text="Select room types">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="109.0" layoutY="95.0" text="1-Bedroom Room">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="108.0" layoutY="157.0" text="2-Bedroom Room">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="stdField" layoutX="292.0" layoutY="30.0" prefHeight="27.0" prefWidth="120.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="onebrField" layoutX="292.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="twobrField" layoutX="292.0" layoutY="151.0" prefHeight="27.0" prefWidth="120.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label layoutX="441.0" layoutY="36.0" text="Room(s)">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="441.0" layoutY="95.0" text="Room(s)">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="441.0" layoutY="157.0" text="Room(s)">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="threebrField" layoutX="292.0" layoutY="212.0" prefHeight="27.0" prefWidth="120.0">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </TextField>
-            <Label layoutX="108.0" layoutY="218.0" text="3-Bedroom Room">
-               <font>
-                  <Font name="Comic Sans MS" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="441.0" layoutY="218.0" text="Room(s)">
+            <ComboBox fx:id="roomBox" layoutX="76.0" layoutY="99.0" prefHeight="42.0" prefWidth="241.0" />
+            <TextField fx:id="textField" layoutX="347.0" layoutY="103.0" prefHeight="35.0" prefWidth="153.0" promptText="input room number" />
+            <Label layoutX="368.0" layoutY="60.0" text="Room number">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>

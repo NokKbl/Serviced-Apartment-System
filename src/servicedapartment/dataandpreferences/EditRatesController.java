@@ -5,6 +5,8 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -71,30 +73,48 @@ public class EditRatesController {
 	}
 	
 	public void handleSave(ActionEvent event) {
-		TypeInfo typeStd = new TypeInfo("Studio", 
+		Alert alert = new Alert(AlertType.INFORMATION);
+		TypeInfo typeStd = null;
+		TypeInfo typeOne = null;
+		TypeInfo typeTwo = null;
+		TypeInfo typeThree = null;
+		try {
+			typeStd = new TypeInfo("Studio", 
 							Integer.parseInt(studioDaily.getText()), 
 							Integer.parseInt(studioWeekly.getText()), 
 							Integer.parseInt(studioMonthly.getText()));
 		
-		TypeInfo typeOne = new TypeInfo("1-Bedroom", 
+			typeOne = new TypeInfo("1-Bedroom", 
 							Integer.parseInt(onebrDaily.getText()), 
 							Integer.parseInt(onebrWeekly.getText()), 
 							Integer.parseInt(onebrMonthly.getText()));
 		
-		TypeInfo typeTwo = new TypeInfo("2-Bedroom", 
+			typeTwo = new TypeInfo("2-Bedroom", 
 							Integer.parseInt(twobrDaily.getText()), 
 							Integer.parseInt(twobrWeekly.getText()), 
 							Integer.parseInt(twobrMonthly.getText()));
 		
-		TypeInfo typeThree = new TypeInfo("3-Bedroom", 
+			typeThree = new TypeInfo("3-Bedroom", 
 							Integer.parseInt(threebrDaily.getText()), 
 							Integer.parseInt(threebrWeekly.getText()), 
 							Integer.parseInt(threebrMonthly.getText()));
+		} catch(NumberFormatException e) {
+			alert.setTitle("Warning");
+			alert.setHeaderText(null);
+			alert.setContentText("Please input only number");
+			alert.showAndWait();
+		}
 		
 		factory.updateDataToTypes(typeStd);
 		factory.updateDataToTypes(typeOne);
 		factory.updateDataToTypes(typeTwo);
 		factory.updateDataToTypes(typeThree);
+		
+		alert.setTitle("Success");
+		alert.setHeaderText(null);
+		alert.setContentText("Update");
+		alert.showAndWait();
+		
 	}
 	
 	public void handleBack(ActionEvent event) throws IOException {

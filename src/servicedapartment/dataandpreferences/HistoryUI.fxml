@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="750.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="750.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.HistoryController">
    <top>
       <Label text="HISTORY" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -40,7 +40,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
    </padding>
    <bottom>
-      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="130.0" text="Logout" BorderPane.alignment="CENTER">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack" prefHeight="37.0" prefWidth="130.0" text="Back" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin>

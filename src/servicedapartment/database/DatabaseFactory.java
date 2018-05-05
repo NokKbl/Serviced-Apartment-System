@@ -181,11 +181,7 @@ public class DatabaseFactory {
 		}
 		return allRoomInfo;
 	}
-<<<<<<< Updated upstream
-	
-=======
 
->>>>>>> Stashed changes
 	public List<TypeInfo> readDataFromRoomType() {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		List<TypeInfo> list = new ArrayList<>();
@@ -207,16 +203,10 @@ public class DatabaseFactory {
 				}
 				
 				rs.close();
-<<<<<<< Updated upstream
 				//connect.commit();
 				stm.close();
 				connect.close();
 				System.out.println("read type success");
-=======
-				connect.commit();
-				stm.close();
-				connect.commit();
->>>>>>> Stashed changes
 			}
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
@@ -225,7 +215,6 @@ public class DatabaseFactory {
 		return list;
 	}
 	
-<<<<<<< Updated upstream
 	public int getCustomerID(String customerName) {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
@@ -284,7 +273,9 @@ public class DatabaseFactory {
 			}
 		} catch(SQLException e) {
 			//System.err.println("can't insert data");
-=======
+		}
+	}
+	
 	public void updateDataToTypes(TypeInfo type) {
 		String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -300,7 +291,24 @@ public class DatabaseFactory {
 				stm.close();
 			}
 		}catch(SQLException e) {
->>>>>>> Stashed changes
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void deleteDataFromRoom(RoomInfo room) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				String sql = "DELETE FROM Rooms WHERE ROOM_NUMBER = " + room.getRoomNumb() + ";";
+				stm.executeUpdate(sql);
+				
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
