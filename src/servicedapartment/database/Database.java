@@ -15,13 +15,13 @@ import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
 
-public class DatabaseFactory {
-	private static DatabaseFactory factory;
+public class Database {
+	private static Database factory;
 	
-	protected DatabaseFactory() { }
+	protected Database() { }
 	
-	public static DatabaseFactory getInstance() {
-		if(factory == null) factory = new DatabaseFactory();
+	public static Database getInstance() {
+		if(factory == null) factory = new Database();
 		return factory;
 	}
 	

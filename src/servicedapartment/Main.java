@@ -7,12 +7,21 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
-import servicedapartment.database.DatabaseFactory;
+import servicedapartment.database.Database;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * Main class for Serviced Apartment System application.
+ * @author Kunyaruk Katebunlu
+ * @author Thanaphon Keawjam
+ */
 public class Main extends Application {
+	/**
+	 * The main entry point for all JavaFX applications. The start method is called after the init method has returned.
+	 * @param primaryStage is the primary stage for this application, onto which the application scene can be set. 
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -28,8 +37,11 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
-		DatabaseFactory factory = DatabaseFactory.getInstance();
+	/**
+	 * Create database file, table and insert default informations and rooms into database.
+	 */
+	public void createDatabaseandDefaultRooms() {
+		Database factory = Database.getInstance();
 		factory.createDatabase("CustomerLog.db");
 		
 		List<RoomInfo> roomInfoData = new ArrayList<>();
@@ -71,12 +83,15 @@ public class Main extends Application {
 			factory.insertDataToRooms(roomh1);
 			factory.insertDataToRooms(roomh2);
 			factory.insertDataToRooms(roomh3);
-<<<<<<< Updated upstream
-=======
-			
->>>>>>> Stashed changes
 		}
-		
+	}
+	
+	/**
+	 * Main method to running the application.
+	 */
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.createDatabaseandDefaultRooms();
 		launch(args);
 	}
 }

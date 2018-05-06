@@ -15,7 +15,7 @@ import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
 import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.database.DatabaseFactory;
+import servicedapartment.database.Database;
 
 public class CheckinSummaryController {
 	@FXML Label name;
@@ -31,7 +31,7 @@ public class CheckinSummaryController {
 	@FXML Label total;
 	@FXML Button checkin;
 	@FXML Button cancel;
-	private DatabaseFactory factory = DatabaseFactory.getInstance();
+	private Database factory = Database.getInstance();
 	private SwitchScene newScene = new SwitchScene();
 	private RoomInfo roomInfo;
 	private CustomerInfo customerInfo;
@@ -40,8 +40,8 @@ public class CheckinSummaryController {
 	private LocalDate dayIn, dayOut;
 	
 	
-	public void initialize(TypeInfo typeInfo, RoomInfo roomInfo, CustomerInfo customerInfo, PaymentInfo paymentInfo, String unit,
-							int totalP, int stayD, int people, LocalDate dayIn, LocalDate dayOut) {
+	public void initialize(TypeInfo typeInfo, RoomInfo roomInfo, CustomerInfo customerInfo, PaymentInfo paymentInfo,
+							String unit, int totalP, int stayD, int people, LocalDate dayIn, LocalDate dayOut) {
 		this.roomInfo = roomInfo;
 		this.customerInfo = customerInfo;
 		this.paymentInfo = paymentInfo;
@@ -69,7 +69,6 @@ public class CheckinSummaryController {
 	public void handleCheckin(ActionEvent event) throws IOException {
 		factory.insertDataToCustomers(customerInfo);
 		int custmId = factory.getCustomerID(customerInfo.getName());
-		//factory.updateCustomerIDInRoom(roomInfo.getRoomNumb(), custmId);
 		int roomID = factory.getRoomID(roomInfo.getRoomNumb());
 		factory.insertDataToPayment(paymentInfo);
 		int paymentID = factory.getPaymentID(paymentInfo.getTrsCode());

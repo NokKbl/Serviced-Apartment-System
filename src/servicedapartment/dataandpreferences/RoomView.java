@@ -14,14 +14,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.database.DatabaseFactory;
+import servicedapartment.database.Database;
 
 public class RoomView implements java.util.Observer{
 	
 	private Room room;
 	private Stage stage;
 	private TableView<Room> table;
-	private DatabaseFactory factory = DatabaseFactory.getInstance();
+	private Database factory = Database.getInstance();
 
 	public RoomView(Room room) {
 		this.room = room;

@@ -26,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
-import servicedapartment.database.DatabaseFactory;
+import servicedapartment.database.Database;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.DateOverlap;
 import servicedapartment.data.OrderInfo;
@@ -50,7 +50,7 @@ public class RoomandPaymentController {
 	@FXML ComboBox<String> paymentTypes;
 	@FXML DatePicker dPaid;
 	private SwitchScene newScene = new SwitchScene();
-	private DatabaseFactory factory = DatabaseFactory.getInstance();
+	private Database factory = Database.getInstance();
 	private List<RoomInfo> roomsI = factory.readDataFromRoom();
 	private List<TypeInfo> typeI = factory.readDataFromRoomType();
 	private List<OrderInfo> orderI = factory.readDataFromOrder();

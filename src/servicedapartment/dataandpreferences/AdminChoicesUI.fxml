@@ -23,7 +23,7 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="roomButton" mnemonicParsing="false" onAction="#handleEditRoom" prefHeight="55.0" prefWidth="255.0" text="Add/Remove Building Blocks">
+                  <Button fx:id="roomButton" mnemonicParsing="false" onAction="#handleEditRoom" prefHeight="55.0" prefWidth="255.0" text="Add/Remove Rooms">
                      <font>
                         <Font name="Comic Sans MS" size="17.0" />
                      </font>
@@ -42,7 +42,7 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="statusButton" mnemonicParsing="false" onAction="#handleRoomStatus" prefHeight="55.0" prefWidth="255.0" text="View Room Status">
+                  <Button fx:id="statusButton" mnemonicParsing="false" onAction="#handleRoomStatus" prefHeight="55.0" prefWidth="255.0" text="View Rooms Status">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>

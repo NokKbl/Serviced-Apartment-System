@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import servicedapartment.SwitchScene;
-import servicedapartment.database.DatabaseFactory;
+import servicedapartment.database.Database;
 
 public class CheckoutController {
 	
@@ -18,7 +18,7 @@ public class CheckoutController {
 	@FXML TextField roomNumField;
 	@FXML TextField nameField;
 	
-	private DatabaseFactory factory = DatabaseFactory.getInstance();
+	private Database factory = Database.getInstance();
 	private SwitchScene newScene = new SwitchScene();
 	
 	public void handleCheckout(ActionEvent event) {

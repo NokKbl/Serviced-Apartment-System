@@ -18,19 +18,26 @@ import javafx.stage.Stage;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.CustomerInfo;
 
+/**
+ * Control action of components in CustomerInfoUI.fxml file and 
+ * @author Kunyaruk Katebunlu
+ */
 public class CustomerInfoController {
-	@FXML TextField name;
-	@FXML TextField phone;
-	@FXML TextField email;
-	@FXML TextField stay;
-	@FXML TextField amount;
-	@FXML DatePicker checkin;
-	@FXML DatePicker checkout;
-	@FXML Button next;
-	@FXML Button cancel;
+	@FXML private TextField name;
+	@FXML private TextField phone;
+	@FXML private TextField email;
+	@FXML private TextField stay;
+	@FXML private TextField amount;
+	@FXML private DatePicker checkin;
+	@FXML private DatePicker checkout;
+	@FXML private Button next;
+	@FXML private Button cancel;
 	private SwitchScene newScene = new SwitchScene();
 	private String units;
 	
+	/**
+	 * Initialize components.
+	 */
 	public void initialize() {
 		checkin.setDayCellFactory(picker -> new DateCell() {
 			@Override
@@ -58,7 +65,6 @@ public class CustomerInfoController {
 		else this.units = "days";
 		
 		CustomerInfo customerInfo = new CustomerInfo(name.getText(), phone.getText(), email.getText());
-		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../checkin/RoomandPaymentUI.fxml"));
 		Parent view = (Parent) loader.load();

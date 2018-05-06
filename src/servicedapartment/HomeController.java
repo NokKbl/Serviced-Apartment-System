@@ -6,14 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * Control action of all components in HomeUI.fxml
+ * @author Kunyaruk Katebunlu
+ */
 public class HomeController {
-	@FXML
-	Button checkin;
-	@FXML
-	Button checkout;
-	@FXML
-	Button admin;
-	SwitchScene newScene = new SwitchScene();
+	@FXML private Button checkin;
+	@FXML private Button checkout;
+	@FXML private Button admin;
+	private SwitchScene newScene = new SwitchScene();
 	
 	/**
 	 * When this method is called, it will change the Scene to check in part.

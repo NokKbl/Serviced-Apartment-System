@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="406.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.EditRoomController">
+<BorderPane prefHeight="295.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="servicedapartment.dataandpreferences.EditRoomController">
    <top>
       <Label text="Add/Remove Rooms" BorderPane.alignment="CENTER">
          <font>
@@ -19,18 +19,21 @@
       </Label>
    </top>
    <center>
-      <AnchorPane prefHeight="266.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="144.0" prefWidth="580.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="124.0" layoutY="60.0" text="Select room types">
+            <Label layoutX="59.0" layoutY="27.0" text="Room Types:">
                <font>
-                  <Font name="Comic Sans MS" size="18.0" />
+                  <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <ComboBox fx:id="roomBox" layoutX="76.0" layoutY="99.0" prefHeight="42.0" prefWidth="241.0" />
-            <TextField fx:id="textField" layoutX="347.0" layoutY="103.0" prefHeight="35.0" prefWidth="153.0" promptText="input room number" />
-            <Label layoutX="368.0" layoutY="60.0" text="Room number">
+            <ComboBox fx:id="roomBox" layoutX="57.0" layoutY="81.0" prefHeight="42.0" prefWidth="241.0" promptText="------ Select Room Type ------" />
+            <TextField fx:id="textField" alignment="CENTER" layoutX="337.0" layoutY="82.0" prefHeight="40.0" prefWidth="187.0" promptText="input room number">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
+               </font></TextField>
+            <Label layoutX="339.0" layoutY="27.0" text="Room Number:">
+               <font>
+                  <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
          </children>
