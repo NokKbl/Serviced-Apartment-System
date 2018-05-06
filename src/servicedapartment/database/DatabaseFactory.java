@@ -428,4 +428,31 @@ public class DatabaseFactory {
 		return dateIO;
 	}
 	
+	public boolean findOrderID(int roomId, int customerId) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		boolean matchOrNot = false;
+		int orderID;
+		try(Connection connect = DriverManager.getConnection(url)) {
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT ORDER_ID FROM Orders WHERE ROOM_ID = " + roomId +
+								" AND CUSTOMER_ID = " + customerId + ";");
+				
+				orderID = rs.getInt("ORDER_ID");
+				if(orderID == 0) matchOrNot = false;
+				else matchOrNot = true;
+				
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return matchOrNot;
+	}
+	
 }

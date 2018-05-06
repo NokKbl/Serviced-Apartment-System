@@ -71,6 +71,10 @@ public class Main extends Application {
 			factory.insertDataToRooms(roomh1);
 			factory.insertDataToRooms(roomh2);
 			factory.insertDataToRooms(roomh3);
+<<<<<<< Updated upstream
+=======
+			
+>>>>>>> Stashed changes
 		}
 		
 		launch(args);
