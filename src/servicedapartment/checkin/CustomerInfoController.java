@@ -72,9 +72,9 @@ public class CustomerInfoController {
 		window.show();
 	}
 	
-	public void handleCheckin() {
+	public void handleDaysorDateOut() {
 		if(!stay.getText().equals("") && checkout.getValue() != null) { checkout.setValue(null); }
-		//else { checkout.setValue(LocalDate.now()); }
+		else if(stay.getText().equals("") && checkout.getValue() == null) { checkout.setValue(LocalDate.now().plusDays(1)); }
 		
 		if(!stay.getText().equals("")) checkout.setValue(checkin.getValue().plusDays(Integer.parseInt(stay.getText())));
 		else stay.setText(String.valueOf(ChronoUnit.DAYS.between(checkin.getValue(), checkout.getValue())));

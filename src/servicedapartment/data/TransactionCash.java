@@ -13,7 +13,7 @@ public class TransactionCash {
 		Random random = new Random();
 		int index = 0;
 		
-		for(int i = 0; i < 15; i++) {
+		for(int i = 0; i < 4; i++) {
 			index = random.nextInt(ALPHABET.length());
 			char ch = ALPHABET.charAt(index);
 			transacCash = transacCash + ch;

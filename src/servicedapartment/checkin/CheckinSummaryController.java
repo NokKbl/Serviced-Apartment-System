@@ -13,6 +13,7 @@ import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
+import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.database.DatabaseFactory;
 
@@ -34,14 +35,16 @@ public class CheckinSummaryController {
 	private SwitchScene newScene = new SwitchScene();
 	private RoomInfo roomInfo;
 	private CustomerInfo customerInfo;
+	private PaymentInfo paymentInfo;
 	private int totalP, stayD, people;
 	private LocalDate dayIn, dayOut;
 	
 	
-	public void initialize(TypeInfo typeInfo, RoomInfo roomInfo, CustomerInfo customerInfo, String unit,
+	public void initialize(TypeInfo typeInfo, RoomInfo roomInfo, CustomerInfo customerInfo, PaymentInfo paymentInfo, String unit,
 							int totalP, int stayD, int people, LocalDate dayIn, LocalDate dayOut) {
 		this.roomInfo = roomInfo;
 		this.customerInfo = customerInfo;
+		this.paymentInfo = paymentInfo;
 		this.totalP = totalP;
 		this.stayD = stayD;
 		this.people = people;
@@ -68,8 +71,10 @@ public class CheckinSummaryController {
 		int custmId = factory.getCustomerID(customerInfo.getName());
 		//factory.updateCustomerIDInRoom(roomInfo.getRoomNumb(), custmId);
 		int roomID = factory.getRoomID(roomInfo.getRoomNumb());
+		factory.insertDataToPayment(paymentInfo);
+		int paymentID = factory.getPaymentID(paymentInfo.getTrsCode());
 		System.out.println(dayIn);
-		OrderInfo orderInfo = new OrderInfo(roomID, custmId, totalP, stayD, people, dayIn, dayOut);
+		OrderInfo orderInfo = new OrderInfo(roomID, custmId, paymentID, totalP, stayD, people, dayIn, dayOut);
 		factory.insertDataToOrders(orderInfo);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);

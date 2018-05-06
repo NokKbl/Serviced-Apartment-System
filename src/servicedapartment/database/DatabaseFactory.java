@@ -1,7 +1,6 @@
 package servicedapartment.database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,7 +60,7 @@ public class DatabaseFactory {
 										+ "DAY_PAID			TEXT,"
 										+ "AMOUNT_PAID		INT,"
 										+ "PAYMENT_TYPE		TEXT,"
-										+ "TRANSACTION_CODE	TEXT);";
+										+ "TRANSACTION_ID	TEXT);";
 				stm.executeUpdate(sqlCustomer);
 				stm.executeUpdate(sqlRoom);
 				stm.executeUpdate(sqlType);
@@ -166,7 +165,7 @@ public class DatabaseFactory {
 			System.out.println("open order success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_CODE) "
+				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_ID) "
 								+ "VALUES ('" + payment.getDayPaid().toString() + "', " + payment.getAmountPaid() + ", '" 
 								+ payment.getPmType() + "', '" + payment.getTrsCode() + "');";
 				stm.executeUpdate(data);
@@ -311,6 +310,27 @@ public class DatabaseFactory {
 				String data = "SELECT ROOM_ID FROM Rooms WHERE ROOM_NUMBER = '" + roomNumber + "';"; 
 				ResultSet rs = stm.executeQuery(data);
 				id = rs.getInt("ROOM_ID");
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return id;
+	}
+	
+	public int getPaymentID(String transactionID) {
+		String url = "jdbc:sqlite:CustomerLog.db";
+		int id = 0;
+		try (Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm =connect.createStatement();
+				String data = "SELECT PAYMENT_ID FROM Payments WHERE TRANSACTION_ID = '" + transactionID + "';"; 
+				ResultSet rs = stm.executeQuery(data);
+				id = rs.getInt("PAYMENT_ID");
 				rs.close();
 				stm.close();
 				connect.commit();
