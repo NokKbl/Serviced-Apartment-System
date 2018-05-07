@@ -26,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.DateOverlap;
 import servicedapartment.data.OrderInfo;
@@ -50,7 +50,7 @@ public class RoomandPaymentController {
 	@FXML private ComboBox<String> paymentTypes;
 	@FXML private DatePicker dPaid;
 	private SwitchScene newScene = new SwitchScene();
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private List<RoomInfo> roomsI = factory.readDataFromRoom();
 	private List<TypeInfo> typeI = factory.readDataFromRoomType();
 	private List<OrderInfo> orderI = factory.readDataFromOrder();
@@ -107,7 +107,7 @@ public class RoomandPaymentController {
 
 		for (String[] strings : useForCompare) {
 			if (ovl.checkOverlap(checkin.toString() + "T00:00:00Z", checkout.toString() + "T23:59:00Z",
-					strings[0] + "T00:00:00Z", strings[1] + "T23:59:00Z")) { return true; }
+					strings[0] + "T00:00:00Z", strings[1] + "T23:59:00Z") && strings[2].equalsIgnoreCase("Occupied")) { return true; }
 			else return false;
 		}
 		return false;

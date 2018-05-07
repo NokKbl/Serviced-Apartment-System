@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 
 public class EditRoomController {
 	
@@ -28,7 +28,7 @@ public class EditRoomController {
 	@FXML
 	TextField textField;
 	
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private SwitchScene newScene = new SwitchScene();
 	private Room room = new Room();
 	private String select;

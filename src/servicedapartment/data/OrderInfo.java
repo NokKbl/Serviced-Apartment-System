@@ -11,9 +11,10 @@ public class OrderInfo {
 	private int people;
 	private LocalDate dayIn;
 	private LocalDate dayOut;
+	private String roomStatus;
 	
 	public OrderInfo(int roomId, int customerId, int paymentId, int pTotal, int daysStay, int people,
-			LocalDate dayIn, LocalDate dayOut) {
+			LocalDate dayIn, LocalDate dayOut, String rmSt) {
 		this.roomId = roomId;
 		this.customerId = customerId;
 		this.paymentId = paymentId;
@@ -22,6 +23,7 @@ public class OrderInfo {
 		this.people = people;
 		this.dayIn = dayIn;
 		this.dayOut = dayOut;
+		this.roomStatus = rmSt;
 	}
 
 	public int getRoomId() {
@@ -54,6 +56,10 @@ public class OrderInfo {
 
 	public LocalDate getDayOut() {
 		return dayOut;
+	}
+	
+	public String getRoomStatus() {
+		return roomStatus;
 	}
 	
 }

@@ -17,7 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TableRow;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 
 public class RoomStatusController {
 	
@@ -33,7 +33,7 @@ public class RoomStatusController {
 	TableColumn<TableRow, String> roomStatus;
 	
 	private SwitchScene newScene = new SwitchScene();
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private LocalDate date;
 	
 	@FXML

@@ -15,7 +15,7 @@ import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
 import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 
 public class CheckinSummaryController {
 	@FXML Label name;
@@ -31,7 +31,7 @@ public class CheckinSummaryController {
 	@FXML Label total;
 	@FXML Button checkin;
 	@FXML Button cancel;
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private SwitchScene newScene = new SwitchScene();
 	private RoomInfo roomInfo;
 	private CustomerInfo customerInfo;
@@ -72,8 +72,8 @@ public class CheckinSummaryController {
 		int roomID = factory.getRoomID(roomInfo.getRoomNumb());
 		factory.insertDataToPayment(paymentInfo);
 		int paymentID = factory.getPaymentID(paymentInfo.getTransactionID());
-		System.out.println(dayIn);
-		OrderInfo orderInfo = new OrderInfo(roomID, custmId, paymentID, totalP, stayD, people, dayIn, dayOut);
+		String rmStatus = "Occupied";
+		OrderInfo orderInfo = new OrderInfo(roomID, custmId, paymentID, totalP, stayD, people, dayIn, dayOut, rmStatus);
 		factory.insertDataToOrders(orderInfo);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);

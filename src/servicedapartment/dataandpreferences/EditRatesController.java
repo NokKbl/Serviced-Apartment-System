@@ -12,7 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 
 public class EditRatesController {
 	
@@ -46,7 +46,7 @@ public class EditRatesController {
 	TextField threebrMonthly;
 	
 	private SwitchScene newScene = new SwitchScene();
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private List<TypeInfo> list;
 	
 	@FXML

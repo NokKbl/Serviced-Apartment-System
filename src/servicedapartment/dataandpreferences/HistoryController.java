@@ -16,7 +16,7 @@ import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.HistoryInfo;
 import servicedapartment.data.OrderInfo;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 
 public class HistoryController {
 	
@@ -42,7 +42,7 @@ public class HistoryController {
 	TableColumn<HistoryInfo, String> dOutCol;
 	
 	private SwitchScene newScene = new SwitchScene();
-	private Database factory = Database.getInstance();
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	
 	@FXML
 	public void initialize() {

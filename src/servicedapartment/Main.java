@@ -7,7 +7,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
-import servicedapartment.database.Database;
+import servicedapartment.database.DatabaseFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +41,7 @@ public class Main extends Application {
 	 * Create database file, table and insert default informations and rooms into database.
 	 */
 	public void createDatabaseandDefaultRooms() {
-		Database factory = Database.getInstance();
+		DatabaseFactory factory = DatabaseFactory.getInstance();
 		factory.createDatabase();
 		
 		List<RoomInfo> roomInfoData = new ArrayList<>();
