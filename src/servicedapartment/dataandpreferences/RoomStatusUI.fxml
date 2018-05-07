@@ -12,13 +12,6 @@
    <padding>
       <Insets bottom="20.0" left="20.0" right="10.0" top="20.0" />
    </padding>
-   <top>
-      <Label text="ROOM STATUS" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Comic Sans MS" size="48.0" />
-         </font>
-      </Label>
-   </top>
    <bottom>
       <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack" prefHeight="37.0" prefWidth="117.0" text="Back" BorderPane.alignment="CENTER">
          <font>
@@ -27,6 +20,35 @@
       </Button>
    </bottom>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="321.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="table" layoutX="98.0" layoutY="-1.0" prefHeight="305.0" prefWidth="370.0">
+              <columns>
+                <TableColumn fx:id="roomNumber" prefWidth="180.0" text="Room No." />
+                <TableColumn fx:id="roomStatus" prefWidth="184.0" text="Room Status" />
+              </columns>
+            </TableView>
+         </children></Pane>
    </center>
+   <top>
+      <Pane prefHeight="122.0" prefWidth="570.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="102.0" text="ROOM STATUS">
+               <font>
+                  <Font name="Comic Sans MS" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="68.0" text="for">
+               <font>
+                  <Font name="Comic Sans MS" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="304.0" layoutY="68.0">
+               <font>
+                  <Font name="Comic Sans MS" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
 </BorderPane>

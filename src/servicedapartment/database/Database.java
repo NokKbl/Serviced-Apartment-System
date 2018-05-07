@@ -388,6 +388,26 @@ public class Database {
 		return dateIO;
 	}
 	
+	public String getDayIn(String roomNumber) {
+		String dIn = "";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT DAY_IN FROM Orders WHERE ROOM_ID = " + getRoomID(roomNumber) + ";");
+				
+				dIn = rs.getString("DAY_IN");
+				
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {}
+		
+		return dIn;
+	}
+	
 	public boolean findOrderID(int roomId, int customerId) {
 		//String url = "jdbc:sqlite:CustomerLog.db";
 		boolean matchOrNot = false;
@@ -411,6 +431,49 @@ public class Database {
 			}
 		}catch(SQLException e) { }
 		return matchOrNot;
+	}
+	
+	public String getRoomNumber(int id){
+		String roomId= "";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT ROOM_NUMBER FROM Rooms WHERE ROOM_ID = " + id + ";");
+				roomId = rs.getString("ROOM_NUMBER");
+				
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {}
+		
+		return roomId;
+	}
+	
+	public CustomerInfo getCustomerInfo(int id){
+		CustomerInfo ctm = null;
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT CUSTOMER_NAME, PHONE_NUMBER, EMAIL FROM Customers WHERE CUSTOMER_ID = " + id + ";");
+				
+				String name = rs.getString("CUSTOMER_NAME");
+				String phone = rs.getString("PHONE_NUMBER");
+				String email = rs.getString("EMAIL");
+				
+				ctm = new CustomerInfo(name, phone, email);
+				
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {}
+		
+		return ctm;
 	}
 	
 }
