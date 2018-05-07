@@ -42,7 +42,7 @@ public class Main extends Application {
 	 */
 	public void createDatabaseandDefaultRooms() {
 		Database factory = Database.getInstance();
-		factory.createDatabase("CustomerLog.db");
+		factory.createDatabase();
 		
 		List<RoomInfo> roomInfoData = new ArrayList<>();
 		List<TypeInfo> typeInfoData = new ArrayList<>();

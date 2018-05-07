@@ -17,6 +17,7 @@ import servicedapartment.data.TypeInfo;
 
 public class Database {
 	private static Database factory;
+	private final String url = "jdbc:sqlite:CustomerLog.db";
 	
 	protected Database() { }
 	
@@ -25,8 +26,8 @@ public class Database {
 		return factory;
 	}
 	
-	public void createDatabase(String filename) {
-		String url = "jdbc:sqlite:" + filename;
+	public void createDatabase() {
+		//String url = "jdbc:sqlite:" + filename;
 		try (Connection connect = DriverManager.getConnection(url)){
 			if(connect != null) {
 				Statement stm = connect.createStatement();
@@ -69,13 +70,11 @@ public class Database {
 				stm.close();
 				connect.close();
 			}
-		} catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public void insertDataToCustomers(CustomerInfo customer) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -89,14 +88,11 @@ public class Database {
 				connect.close();
 				System.out.println("write customer success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public void insertDataToRooms(RoomInfo room) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -109,14 +105,11 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public void insertDataToTypes(TypeInfo type) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -129,14 +122,11 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public void insertDataToOrders(OrderInfo order) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open order success");
@@ -152,14 +142,11 @@ public class Database {
 				connect.close();
 				System.out.println("write order success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public void insertDataToPayment(PaymentInfo payment) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open order success");
@@ -174,14 +161,11 @@ public class Database {
 				connect.close();
 				System.out.println("write order success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	public List<RoomInfo> readDataFromRoom() {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<RoomInfo> allRoomInfo = new ArrayList<>();
 		RoomInfo roomInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -204,15 +188,12 @@ public class Database {
 				connect.close();
 				System.out.println("read room success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 		return allRoomInfo;
 	}
 
 	public List<TypeInfo> readDataFromRoomType() {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<TypeInfo> list = new ArrayList<>();
 		TypeInfo type = null;
 		try (Connection connect = DriverManager.getConnection(url)){
@@ -236,15 +217,12 @@ public class Database {
 				connect.close();
 				System.out.println("read type success");
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		
+		}catch(SQLException e) { }
 		return list;
 	}
 	
 	public List<OrderInfo> readDataFromOrder(){
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<OrderInfo> allOrders = new ArrayList<>();
 		OrderInfo orderInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -272,15 +250,12 @@ public class Database {
 				connect.close();
 				System.out.println("read orders success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 		return allOrders;
 	}
 
 	public int getCustomerID(String customerName) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -294,14 +269,12 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(SQLException e) { }
 		return id;
 	}
 	
 	public int getRoomID(String roomNumber) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -315,14 +288,12 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(SQLException e) { }
 		return id;
 	}
 	
 	public int getPaymentID(String transactionID) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -336,34 +307,32 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(SQLException e) { }
 		return id;
 	}
 	
-	public void updateCustomerIDInRoom(String roomNb, int customerID) {
-		//gonna delete it
-		String url = "jdbc:sqlite:CustomerLog.db";
-		try(Connection connect = DriverManager.getConnection(url)){
-			connect.setAutoCommit(false);
-			System.out.println("open db success");
-			if(connect != null) {
-				Statement stm = connect.createStatement();
-				String data = "UPDATE Rooms SET CUSTOMER_ID = " + customerID + " WHERE ROOM_NUMBER = '" + roomNb + "';";
-				stm.executeUpdate(data);
-				stm.close();
-				connect.commit();
-				connect.close();
-				System.out.println("update customerID success");
-			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-		}
-	}
+//	public void updateCustomerIDInRoom(String roomNb, int customerID) {
+//		//gonna delete it
+//		String url = "jdbc:sqlite:CustomerLog.db";
+//		try(Connection connect = DriverManager.getConnection(url)){
+//			connect.setAutoCommit(false);
+//			System.out.println("open db success");
+//			if(connect != null) {
+//				Statement stm = connect.createStatement();
+//				String data = "UPDATE Rooms SET CUSTOMER_ID = " + customerID + " WHERE ROOM_NUMBER = '" + roomNb + "';";
+//				stm.executeUpdate(data);
+//				stm.close();
+//				connect.commit();
+//				connect.close();
+//				System.out.println("update customerID success");
+//			}
+//		} catch(SQLException e) {
+//			//System.err.println("can't insert data");
+//		}
+//	}
 	
 	public void updateDataToTypes(TypeInfo type) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			if(connect != null) {
@@ -376,13 +345,11 @@ public class Database {
 				connect.close();
 				stm.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(SQLException e) { }
 	}
 	
 	public void deleteDataFromRoom(RoomInfo room) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			if(connect != null) {
@@ -394,17 +361,14 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		}catch(SQLException e) { }
 	}
 	
 	public List<String[]> getDayIO(int roomID){
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<String[]> dateIO = new ArrayList<>();
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			//System.out.println("open room table success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT DAY_IN, DAY_OUT FROM Orders WHERE ROOM_ID = " + roomID + ";");
@@ -419,19 +383,16 @@ public class Database {
 				rs.close();
 				stm.close();
 				connect.close();
-				System.out.println("read day success");
 			}
-		} catch(SQLException e) {
-			//System.err.println("can't insert data");
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 		return dateIO;
 	}
 	
 	public boolean findOrderID(int roomId, int customerId) {
-		String url = "jdbc:sqlite:CustomerLog.db";
+		//String url = "jdbc:sqlite:CustomerLog.db";
 		boolean matchOrNot = false;
 		int orderID;
+		
 		try(Connection connect = DriverManager.getConnection(url)) {
 			connect.setAutoCommit(false);
 			if(connect != null) {
@@ -448,10 +409,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		
+		}catch(SQLException e) { }
 		return matchOrNot;
 	}
 	
