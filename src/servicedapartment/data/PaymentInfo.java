@@ -23,11 +23,11 @@ public class PaymentInfo {
 		return amountPaid;
 	}
 
-	public String getPmType() {
+	public String getPaymentType() {
 		return pmType;
 	}
 
-	public String getTrsCode() {
+	public String getTransactionID() {
 		return trsCode;
 	}
 	

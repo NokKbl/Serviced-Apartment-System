@@ -71,7 +71,7 @@ public class CheckinSummaryController {
 		int custmId = factory.getCustomerID(customerInfo.getName());
 		int roomID = factory.getRoomID(roomInfo.getRoomNumb());
 		factory.insertDataToPayment(paymentInfo);
-		int paymentID = factory.getPaymentID(paymentInfo.getTrsCode());
+		int paymentID = factory.getPaymentID(paymentInfo.getTransactionID());
 		System.out.println(dayIn);
 		OrderInfo orderInfo = new OrderInfo(roomID, custmId, paymentID, totalP, stayD, people, dayIn, dayOut);
 		factory.insertDataToOrders(orderInfo);

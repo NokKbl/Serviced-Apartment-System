@@ -2,6 +2,7 @@ package servicedapartment.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -79,16 +80,26 @@ public class Database {
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
 			if(connect != null) {
-				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Customers (CUSTOMER_NAME, PHONE_NUMBER, EMAIL) "
-								+ "VALUES ('" + customer.getName() + "', '" + customer.getPhone() + "', '" + customer.getEmail() + "');";
-				stm.executeUpdate(data);
-				stm.close();
+//				Statement stm = connect.createStatement();
+//				String data = "INSERT INTO Customers (CUSTOMER_NAME, PHONE_NUMBER, EMAIL) "
+//								+ "VALUES ('" + customer.getName() + "', '" + customer.getPhone() + "', '" + customer.getEmail() + "');";
+//				stm.executeUpdate(data);
+//				stm.close();
+				String data = "INSERT INTO Customers (CUSTOMER_NAME, PHONE_NUMBER, EMAIL) VALUES (?, ?, ?);";
+				PreparedStatement pstm = connect.prepareStatement(data);
+				
+				pstm.setString(1, customer.getName());
+				pstm.setString(2, customer.getPhone());
+				pstm.setString(3, customer.getEmail());
+				pstm.executeUpdate();
+				pstm.close();
 				connect.commit();
 				connect.close();
 				System.out.println("write customer success");
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void insertDataToRooms(RoomInfo room) {
@@ -97,15 +108,22 @@ public class Database {
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
 			if(connect != null) {
-				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID) "
-								+ "VALUES ('" + room.getRoomNumb() + "', " + room.getTypeId() + ");";
-				stm.executeUpdate(data);
-				stm.close();
+//				Statement stm = connect.createStatement();
+//				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID) "
+//								+ "VALUES ('" + room.getRoomNumb() + "', " + room.getTypeId() + ");";
+//				stm.executeUpdate(data);
+//				stm.close();
+				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID) VALUES (?, ?);";
+				PreparedStatement pstm = connect.prepareStatement(data);
+				
+				pstm.setString(1, room.getRoomNumb());
+				pstm.setInt(2, room.getTypeId());
+				pstm.executeUpdate();
+				pstm.close();
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public void insertDataToTypes(TypeInfo type) {
@@ -114,15 +132,24 @@ public class Database {
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
 			if(connect != null) {
-				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Room_Types (ROOM_TYPE, PRICE_DAY, PRICE_WEEK, PRICE_MONTH) "
-								+ "VALUES ( '" + type.getRoomType() + "', " + type.getpDays() + ", " + type.getpWeeks() + ", " + type.getpMonths() + ");";
-				stm.executeUpdate(data);
-				stm.close();
+//				Statement stm = connect.createStatement();
+//				String data = "INSERT INTO Room_Types (ROOM_TYPE, PRICE_DAY, PRICE_WEEK, PRICE_MONTH) "
+//								+ "VALUES ( '" + type.getRoomType() + "', " + type.getpDays() + ", " + type.getpWeeks() + ", " + type.getpMonths() + ");";
+//				stm.executeUpdate(data);
+//				stm.close();
+				String data = "INSERT INTO Room_Types (ROOM_TYPE, PRICE_DAY, PRICE_WEEK, PRICE_MONTH) VALUES (?, ?, ?, ?);";
+				PreparedStatement pstm = connect.prepareStatement(data);
+				
+				pstm.setString(1, type.getRoomType());
+				pstm.setInt(2, type.getpDays());
+				pstm.setInt(3, type.getpWeeks());
+				pstm.setInt(4, type.getpMonths());
+				pstm.executeUpdate();
+				pstm.close();
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public void insertDataToOrders(OrderInfo order) {
@@ -131,18 +158,32 @@ public class Database {
 			connect.setAutoCommit(false);
 			System.out.println("open order success");
 			if(connect != null) {
-				Statement stm = connect.createStatement();
+//				Statement stm = connect.createStatement();
+//				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, PAYMENT_ID, TOTAL_PRICE, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT) "
+//								+ "VALUES (" + order.getRoomId() + ", " + order.getCustomerId() + ", " + order.getPaymentId() + ", "
+//								+ order.getpTotal() + ", " + order.getDaysStay() + ", " + order.getPeople() + ", '"
+//								+ order.getDayIn().toString() + "', '" + order.getDayOut().toString() + "');";
+//				stm.executeUpdate(data);
+//				stm.close();
 				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, PAYMENT_ID, TOTAL_PRICE, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT) "
-								+ "VALUES (" + order.getRoomId() + ", " + order.getCustomerId() + ", " + order.getPaymentId() + ", "
-								+ order.getpTotal() + ", " + order.getDaysStay() + ", " + order.getPeople() + ", '"
-								+ order.getDayIn().toString() + "', '" + order.getDayOut().toString() + "');";
-				stm.executeUpdate(data);
-				stm.close();
+								+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+				PreparedStatement pstm = connect.prepareStatement(data);
+				
+				pstm.setInt(1, order.getRoomId());
+				pstm.setInt(2, order.getCustomerId());
+				pstm.setInt(3, order.getPaymentId());
+				pstm.setInt(4, order.getpTotal());
+				pstm.setInt(5, order.getDaysStay());
+				pstm.setInt(6, order.getPeople());
+				pstm.setString(7, order.getDayIn().toString());
+				pstm.setString(8, order.getDayOut().toString());
+				pstm.executeUpdate();
+				pstm.close();
 				connect.commit();
 				connect.close();
 				System.out.println("write order success");
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public void insertDataToPayment(PaymentInfo payment) {
@@ -151,17 +192,26 @@ public class Database {
 			connect.setAutoCommit(false);
 			System.out.println("open order success");
 			if(connect != null) {
-				Statement stm = connect.createStatement();
-				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_ID) "
-								+ "VALUES ('" + payment.getDayPaid().toString() + "', " + payment.getAmountPaid() + ", '" 
-								+ payment.getPmType() + "', '" + payment.getTrsCode() + "');";
-				stm.executeUpdate(data);
-				stm.close();
+//				Statement stm = connect.createStatement();
+//				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_ID) "
+//								+ "VALUES ('" + payment.getDayPaid().toString() + "', " + payment.getAmountPaid() + ", '" 
+//								+ payment.getPmType() + "', '" + payment.getTrsCode() + "');";
+//				stm.executeUpdate(data);
+//				stm.close();
+				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_ID) VALUES (?, ?, ?, ?);";
+				PreparedStatement pstm = connect.prepareStatement(data);
+				
+				pstm.setString(1, payment.getDayPaid().toString());
+				pstm.setInt(2, payment.getAmountPaid());
+				pstm.setString(3, payment.getPaymentType());
+				pstm.setString(4, payment.getTransactionID());
+				pstm.executeUpdate();
+				pstm.close();
 				connect.commit();
 				connect.close();
 				System.out.println("write order success");
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public List<RoomInfo> readDataFromRoom() {
@@ -188,7 +238,7 @@ public class Database {
 				connect.close();
 				System.out.println("read room success");
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 		return allRoomInfo;
 	}
 
@@ -217,7 +267,7 @@ public class Database {
 				connect.close();
 				System.out.println("read type success");
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 		return list;
 	}
 	
@@ -250,7 +300,7 @@ public class Database {
 				connect.close();
 				System.out.println("read orders success");
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) {System.out.println(e.getMessage()); }
 		return allOrders;
 	}
 
@@ -269,7 +319,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 		return id;
 	}
 	
@@ -288,7 +338,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 		return id;
 	}
 	
@@ -307,7 +357,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) {System.out.println(e.getMessage()); }
 		return id;
 	}
 	
@@ -345,7 +395,7 @@ public class Database {
 				connect.close();
 				stm.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public void deleteDataFromRoom(RoomInfo room) {
@@ -361,7 +411,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
 	public List<String[]> getDayIO(int roomID){
@@ -384,7 +434,7 @@ public class Database {
 				stm.close();
 				connect.close();
 			}
-		} catch(SQLException e) { }
+		} catch(SQLException e) { System.out.println(e.getMessage());}
 		return dateIO;
 	}
 	
@@ -429,7 +479,7 @@ public class Database {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { }
+		}catch(SQLException e) { System.out.println(e.getMessage());}
 		return matchOrNot;
 	}
 	
