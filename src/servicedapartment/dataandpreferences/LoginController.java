@@ -31,15 +31,15 @@ public class LoginController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		
-	//	if(username.equals(USERNAME) && password.equals(PASSWORD)) {
+		if(username.equals(USERNAME) && password.equals(PASSWORD)) {
 			newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
-	//	}else {
-	//		Alert alert = new Alert(AlertType.INFORMATION);
-	//		alert.setTitle("Warning");
-	//		alert.setHeaderText(null);
-	//		alert.setContentText("Wrong username or password! Please try again");
-	//		alert.showAndWait();
-	//	}
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning");
+			alert.setHeaderText(null);
+			alert.setContentText("Wrong username or password! Please try again");
+			alert.showAndWait();
+		}
 	}
 	
 	public void handleBack(ActionEvent event) throws IOException {

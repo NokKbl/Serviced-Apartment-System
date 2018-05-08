@@ -392,26 +392,6 @@ public class DatabaseFactory {
 		return dateIO;
 	}
 	
-	public String getDayIn(String roomNumber) {
-		String dIn = "";
-		try(Connection connect = DriverManager.getConnection(url)){
-			connect.setAutoCommit(false);
-			if(connect != null) {
-				Statement stm = connect.createStatement();
-				ResultSet rs = stm.executeQuery("SELECT DAY_IN FROM Orders WHERE ROOM_ID = " + getRoomID(roomNumber) + ";");
-				
-				dIn = rs.getString("DAY_IN");
-				
-				rs.close();
-				stm.close();
-				connect.commit();
-				connect.close();
-			}
-		}catch(SQLException e) {}
-		
-		return dIn;
-	}
-	
 	public boolean findOrderIDandUpdateStatus(int roomId, int customerId) {
 		boolean matchOrNot = false;
 		int orderID;
@@ -483,6 +463,26 @@ public class DatabaseFactory {
 		}catch(SQLException e) {}
 		
 		return ctm;
+	}
+	
+	public String getRoomStatus(int id) {
+		String status = "";
+		try(Connection connect = DriverManager.getConnection(url)){
+			connect.setAutoCommit(false);
+			if(connect != null) {
+				Statement stm = connect.createStatement();
+				ResultSet rs = stm.executeQuery("SELECT ROOM_STATUS FROM Orders WHERE ROOM_ID = " + id + ";");
+				
+				status = rs.getString("ROOM_STATUS");
+				
+				rs.close();
+				stm.close();
+				connect.commit();
+				connect.close();
+			}
+		}catch(SQLException e) {}
+		
+		return status;
 	}
 	
 }

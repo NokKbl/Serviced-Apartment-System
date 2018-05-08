@@ -6,8 +6,6 @@ public class TableRow{
 	private SimpleStringProperty roomNb;
 	private SimpleStringProperty roomSt;
 	
-	public TableRow() {}
-	
 	public TableRow(String roomNb, String roomSt) {
 		this.roomNb = new SimpleStringProperty(roomNb);
 		this.roomSt = new SimpleStringProperty(roomSt);

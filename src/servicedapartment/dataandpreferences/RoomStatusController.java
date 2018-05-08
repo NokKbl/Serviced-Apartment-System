@@ -49,17 +49,16 @@ public class RoomStatusController {
 	public ObservableList<TableRow> getRoomData(){
 		ObservableList<TableRow> room = FXCollections.observableArrayList();
 		List<RoomInfo> roomList = factory.readDataFromRoom();
-		TableRow tableRow;
+		TableRow tableRow = null;
 		String dIn = "";
 		
 		for(RoomInfo x : roomList) {
-			String roomNum = x.getRoomNumb();
-			dIn = factory.getDayIn(roomNum);
-			if(dIn.equals(date.toString())) {
-				tableRow = new TableRow(roomNum, "Occupied");
-			}else {
-				tableRow = new TableRow(roomNum, "Vacant");
-			}
+			String roomNumber = x.getRoomNumb();
+			int id = factory.getRoomID(roomNumber);
+			String status = factory.getRoomStatus(id);
+			
+			if(status.equals("Vacant") || status.equals("")) tableRow = new TableRow(roomNumber, "Vacant");
+			else tableRow = new TableRow(roomNumber, "Occupied");
 			
 			room.add(tableRow);
 		}
