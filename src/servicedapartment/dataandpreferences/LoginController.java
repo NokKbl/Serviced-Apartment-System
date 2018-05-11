@@ -34,18 +34,10 @@ public class LoginController {
 		
 		if(username.equals(USERNAME) && password.equals(PASSWORD)) {
 			newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
-<<<<<<< Updated upstream
-		}else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Warning");
-			alert.setHeaderText(null);
-			alert.setContentText("Wrong username or password! Please try again");
-=======
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setContentText("Wrong username or password! Please try again.");
->>>>>>> Stashed changes
 			alert.showAndWait();
 		}
 	}
