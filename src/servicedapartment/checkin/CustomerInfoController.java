@@ -69,8 +69,7 @@ public class CustomerInfoController {
 		else this.units = "days";
 		
 		CustomerInfo customerInfo = new CustomerInfo(name.getText(), phone.getText(), email.getText());
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../checkin/RoomandPaymentUI.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/servicedapartment/checkin/RoomandPaymentUI.fxml"));
 		Parent view = (Parent) loader.load();
 		Scene scene = new Scene(view);
 		

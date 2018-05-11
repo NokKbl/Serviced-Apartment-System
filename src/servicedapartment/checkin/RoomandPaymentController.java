@@ -271,8 +271,7 @@ public class RoomandPaymentController {
 				this.paymentInfo = new PaymentInfo(dPaid.getValue(), Integer.parseInt(paid.getText()),
 						paymentTypes.getValue(), trId.getText());
 
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("../checkin/CheckinSummaryUI.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/servicedapartment/checkin/CheckinSummaryUI.fxml"));
 				Parent view = loader.load();
 				Scene scene = new Scene(view);
 
