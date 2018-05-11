@@ -15,56 +15,61 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.data.TableRow;
+import servicedapartment.data.StatusTableRow;
 import servicedapartment.database.DatabaseFactory;
 
+/**
+ * Control the components in RoomStatusUI.fxml file and use to show room status in each day.
+ * @author Thanaphon Keawjam
+ */
 public class RoomStatusController {
-	
-	@FXML
-	Button backButton;
-	@FXML
-	Label dateLabel;
-	@FXML
-	TableView<TableRow> table;
-	@FXML
-	TableColumn<TableRow, String> roomNumber;
-	@FXML
-	TableColumn<TableRow, String> roomStatus;
-	
+	@FXML private Button backButton;
+	@FXML private Label dateLabel;
+	@FXML private TableView<StatusTableRow> table;
+	@FXML private TableColumn<StatusTableRow, String> roomNumber;
+	@FXML private TableColumn<StatusTableRow, String> roomStatus;
 	private SwitchScene newScene = new SwitchScene();
 	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private LocalDate date;
 	
+	/**
+	 * Initialize components.
+	 */
 	@FXML
 	public void initialize() {
 		date = LocalDate.now();
 		dateLabel.setText(date.toString());
-		
 		roomNumber.setCellValueFactory(new PropertyValueFactory<>("roomNb"));
 		roomStatus.setCellValueFactory(new PropertyValueFactory<>("roomSt"));
 		table.setItems(getRoomData());
 	}
 	
-	public ObservableList<TableRow> getRoomData(){
-		ObservableList<TableRow> room = FXCollections.observableArrayList();
+	/**
+	 * Create and add data into ObservableList which is a list that allows listeners to track changes when they occur.
+	 * @return an ObservableList of data that will be show in TableView.
+	 */
+	public ObservableList<StatusTableRow> getRoomData(){
+		ObservableList<StatusTableRow> room = FXCollections.observableArrayList();
 		List<RoomInfo> roomList = factory.readDataFromRoom();
-		TableRow tableRow = null;
-		String dIn = "";
+		StatusTableRow tableRow = null;
 		
 		for(RoomInfo x : roomList) {
 			String roomNumber = x.getRoomNumb();
 			int id = factory.getRoomID(roomNumber);
 			String status = factory.getRoomStatus(id);
 			
-			if(status.equals("Vacant") || status.equals("")) tableRow = new TableRow(roomNumber, "Vacant");
-			else tableRow = new TableRow(roomNumber, "Occupied");
+			if(status.equals("Vacant") || status.equals("")) tableRow = new StatusTableRow(roomNumber, "Vacant");
+			else tableRow = new StatusTableRow(roomNumber, "Occupied");
 			
 			room.add(tableRow);
 		}
-		
 		return room;
 	}
 	
+	/**
+	 * Switch back to the AdminChoice scene.
+	 * @throws IOException if FXMLLoader cannot get resource from file.
+	 */
 	public void handleBack(ActionEvent event) throws IOException {
 		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
 	}

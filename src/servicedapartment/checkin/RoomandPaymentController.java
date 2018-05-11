@@ -32,7 +32,7 @@ import servicedapartment.data.DateOverlap;
 import servicedapartment.data.OrderInfo;
 import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
-import servicedapartment.data.TableRow;
+import servicedapartment.data.StatusTableRow;
 import servicedapartment.data.TransactionCash;
 
 /**
@@ -42,9 +42,9 @@ import servicedapartment.data.TransactionCash;
  */
 public class RoomandPaymentController {
 	@FXML private ComboBox<String> roomTypes;
-	@FXML private TableView<TableRow> table;
-	@FXML private TableColumn<TableRow, String> roomNumb;
-	@FXML private TableColumn<TableRow, String> roomStatus;
+	@FXML private TableView<StatusTableRow> table;
+	@FXML private TableColumn<StatusTableRow, String> roomNumb;
+	@FXML private TableColumn<StatusTableRow, String> roomStatus;
 	@FXML private Button next;
 	@FXML private Button cancel;
 	@FXML private TextField roomRate;
@@ -139,18 +139,18 @@ public class RoomandPaymentController {
 	 * @param roomList is a list of rooms that will be add into table.
 	 * @return a list of data that will be show in the TableView.
 	 */
-	public List<TableRow> createTR(List<RoomInfo> roomList) {
-		List<TableRow> tbR = new ArrayList<>();
+	public List<StatusTableRow> createTR(List<RoomInfo> roomList) {
+		List<StatusTableRow> tbR = new ArrayList<>();
 		String status = null;
 
 		for (RoomInfo roomInfo : roomList) {
 			if (checkOverlapTime(factory.getRoomID(roomInfo.getRoomNumb())) == false || orderI.isEmpty()) {
 				status = "Vacant";
-				TableRow tb = new TableRow(roomInfo.getRoomNumb(), status);
+				StatusTableRow tb = new StatusTableRow(roomInfo.getRoomNumb(), status);
 				tbR.add(tb);
 			} else {
 				status = "Occupied";
-				TableRow tb = new TableRow(roomInfo.getRoomNumb(), status);
+				StatusTableRow tb = new StatusTableRow(roomInfo.getRoomNumb(), status);
 				tbR.add(tb);
 			}
 		}
@@ -162,8 +162,8 @@ public class RoomandPaymentController {
 	 * @param roomList is a list of rooms that will be add into table.
 	 * @return an ObservableList of data that will be show in TableView. 
 	 */
-	public ObservableList<TableRow> getRoomData(List<RoomInfo> roomList) {
-		ObservableList<TableRow> room = FXCollections.observableArrayList();
+	public ObservableList<StatusTableRow> getRoomData(List<RoomInfo> roomList) {
+		ObservableList<StatusTableRow> room = FXCollections.observableArrayList();
 		room.addAll(createTR(roomList));
 		return room;
 	}
@@ -230,7 +230,6 @@ public class RoomandPaymentController {
 				if (roomInfo.getRoomNumb().startsWith("4")) typeR.add(roomInfo);
 			}
 		}
-		
 		addToTableView(typeR);
 	}
 
@@ -261,11 +260,11 @@ public class RoomandPaymentController {
 	 */
 	public void handleNext(ActionEvent event) throws IOException {
 		try {
-			TableRow roomI = table.getSelectionModel().getSelectedItem();
+			StatusTableRow roomI = table.getSelectionModel().getSelectedItem();
 
-			if (roomI.getRoomSt().equalsIgnoreCase("Vacant")) {
+			if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
 				for (RoomInfo roomInfo : roomsI) {
-					if (roomI.getRoomNb().equalsIgnoreCase(roomInfo.getRoomNumb()))
+					if (roomI.getRoomNumber().equalsIgnoreCase(roomInfo.getRoomNumb()))
 						this.roomInfo = roomInfo;
 				}
 				this.total = getandCalTotal();
@@ -287,7 +286,7 @@ public class RoomandPaymentController {
 			} else {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Room Unavailable");
-				alert.setContentText("Room " + roomI.getRoomNb()
+				alert.setContentText("Room " + roomI.getRoomNumber()
 						+ " is on 'Occupied' state. Please choose another room with 'Vacant' state.");
 				alert.showAndWait();
 			}

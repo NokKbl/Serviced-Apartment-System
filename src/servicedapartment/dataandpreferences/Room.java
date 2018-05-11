@@ -19,7 +19,7 @@ public class Room extends Observable{
 	public Room() { }
 	
 	/**
-	 * Create Room object with the values, set the changed and notify the observers.
+	 * Initialize values in Room object, set the changed and notify the observers.
 	 * @param roomType is a type of rooms.
 	 * @param roomNumber is a number of the room.
 	 */

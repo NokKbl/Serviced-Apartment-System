@@ -32,25 +32,22 @@ public class CheckoutController {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		String roomNumber = roomNumField.getText().trim();
 		String customerName = nameField.getText().trim();
-		
+		int roomID = factory.getRoomID(roomNumber);
+		int customerID = factory.getCustomerID(customerName);
+		boolean matchOrNot = factory.findOrderIDandUpdateStatus(roomID, customerID);
+	
 		if(roomNumber.isEmpty() || customerName.isEmpty()) {
 			alert.setTitle("Warning");
 			alert.setHeaderText(null);
 			alert.setContentText("Please input both room number and customer name.");
 			alert.showAndWait();
-		}
-		
-		int roomID = factory.getRoomID(roomNumber);
-		int customerID = factory.getCustomerID(customerName);
-		boolean matchOrNot = factory.findOrderIDandUpdateStatus(roomID, customerID);
-	
-		if(matchOrNot) {
+		} else if(matchOrNot) {
 			alert.setTitle("Checkout successful");
 			alert.setHeaderText(null);
 			alert.setContentText("This order has successfully checked out.");
 			alert.showAndWait();
 			newScene.switchScene(event, "HomeUI.fxml");
-		}else {
+		} else {
 			alert.setTitle("Checkout falied");
 			alert.setHeaderText(null);
 			alert.setContentText("Sorry, no orders match with these information.");

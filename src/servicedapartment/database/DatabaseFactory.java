@@ -22,11 +22,18 @@ public class DatabaseFactory {
 	
 	protected DatabaseFactory() { }
 	
+	/**
+	 * Get an instance of Database factory.
+	 * @return DatabaseFactory object.
+	 */
 	public static DatabaseFactory getInstance() {
 		if(factory == null) factory = new DatabaseFactory();
 		return factory;
 	}
 	
+	/**
+	 * Create file and tables in database.
+	 */
 	public void createDatabase() {
 		try (Connection connect = DriverManager.getConnection(url)){
 			if(connect != null) {
@@ -74,6 +81,10 @@ public class DatabaseFactory {
 		} catch(SQLException e) { }
 	}
 	
+	/**
+	 * Insert customer's information into Customers table.
+	 * @param customer is an object that contains customer's information.
+	 */
 	public void insertDataToCustomers(CustomerInfo customer) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -96,6 +107,10 @@ public class DatabaseFactory {
 		}
 	}
 	
+	/**
+	 * Insert room's information into Rooms table.
+	 * @param room is an object that contains room's information.
+	 */
 	public void insertDataToRooms(RoomInfo room) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -114,6 +129,10 @@ public class DatabaseFactory {
 		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Insert room type's information into Room_Types table.
+	 * @param type is an object that contains room type's information.
+	 */
 	public void insertDataToTypes(TypeInfo type) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -134,6 +153,10 @@ public class DatabaseFactory {
 		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Insert order's information into Orders table.
+	 * @param order is an object that contains order's information.
+	 */
 	public void insertDataToOrders(OrderInfo order) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -161,6 +184,10 @@ public class DatabaseFactory {
 		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Insert payment's information into Payments table.
+	 * @param payment is an object that contains payment's information.
+	 */
 	public void insertDataToPayment(PaymentInfo payment) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -182,8 +209,11 @@ public class DatabaseFactory {
 		} catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Read data from Rooms table.
+	 * @return List of all data in Rooms table.
+	 */
 	public List<RoomInfo> readDataFromRoom() {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<RoomInfo> allRoomInfo = new ArrayList<>();
 		RoomInfo roomInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -196,7 +226,6 @@ public class DatabaseFactory {
 				while(rs.next()) {
 					String roomN = rs.getString("ROOM_NUMBER");
 					int typeID = rs.getInt("TYPE_ID");
-					//int customerID = rs.getInt("CUSTOMER_ID");
 					roomInfo = new RoomInfo(roomN, typeID);
 					allRoomInfo.add(roomInfo);
 				}
@@ -210,8 +239,11 @@ public class DatabaseFactory {
 		return allRoomInfo;
 	}
 
+	/**
+	 * Read data from Room_Types table.
+	 * @return List of all data in Room_Types table.
+	 */
 	public List<TypeInfo> readDataFromRoomType() {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<TypeInfo> list = new ArrayList<>();
 		TypeInfo type = null;
 		try (Connection connect = DriverManager.getConnection(url)){
@@ -239,8 +271,11 @@ public class DatabaseFactory {
 		return list;
 	}
 	
+	/**
+	 * Read data from Orders table.
+	 * @return List of all data in Orders table.
+	 */
 	public List<OrderInfo> readDataFromOrder(){
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<OrderInfo> allOrders = new ArrayList<>();
 		OrderInfo orderInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -273,8 +308,12 @@ public class DatabaseFactory {
 		return allOrders;
 	}
 
+	/**
+	 * Get ID (primary key) of a customer.
+	 * @param customerName is name of customer that want to get an ID.
+	 * @return ID of the customer.
+	 */
 	public int getCustomerID(String customerName) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -292,8 +331,12 @@ public class DatabaseFactory {
 		return id;
 	}
 	
+	/**
+	 * Get ID (primary key) of a room.
+	 * @param roomNumber is number of room that want to get an ID.
+	 * @return ID of the room.
+	 */
 	public int getRoomID(String roomNumber) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -311,6 +354,11 @@ public class DatabaseFactory {
 		return id;
 	}
 	
+	/**
+	 * Get ID (primary key) of a payment.
+	 * @param transactionID is payment that want to get an ID.
+	 * @return ID of the payment.
+	 */
 	public int getPaymentID(String transactionID) {
 		int id = 0;
 		try (Connection connect = DriverManager.getConnection(url)){
@@ -320,6 +368,7 @@ public class DatabaseFactory {
 				String data = "SELECT PAYMENT_ID FROM Payments WHERE TRANSACTION_ID = '" + transactionID + "';"; 
 				ResultSet rs = stm.executeQuery(data);
 				id = rs.getInt("PAYMENT_ID");
+				
 				rs.close();
 				stm.close();
 				connect.commit();
@@ -329,16 +378,19 @@ public class DatabaseFactory {
 		return id;
 	}
 	
+	/**
+	 * Update data into Types table.
+	 * @param type is a type that want to update.
+	 */
 	public void updateDataToTypes(TypeInfo type) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				String sql = "UPDATE Room_Types SET PRICE_DAY = " + type.getpDays() + ", PRICE_WEEK = " + type.getpWeeks() + 
 								", PRICE_MONTH = " + type.getpMonths() + " WHERE ROOM_TYPE ='" + type.getRoomType() + "';";
-				stm.executeUpdate(sql);
 				
+				stm.executeUpdate(sql);
 				connect.commit();
 				connect.close();
 				stm.close();
@@ -346,8 +398,11 @@ public class DatabaseFactory {
 		}catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Delete data from Rooms table.
+	 * @param room is a room that want to delete.
+	 */
 	public void deleteDataFromRoom(RoomInfo room) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			if(connect != null) {
@@ -362,8 +417,12 @@ public class DatabaseFactory {
 		}catch(SQLException e) { System.out.println(e.getMessage());}
 	}
 	
+	/**
+	 * Get day in and day out and status of a room.
+	 * @param roomID is ID of a room that want to get the information.
+	 * @return List which contains day in and day out and status of a room.
+	 */
 	public List<String[]> getDayIO(int roomID){
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		List<String[]> dateIO = new ArrayList<>();
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
@@ -387,6 +446,12 @@ public class DatabaseFactory {
 		return dateIO;
 	}
 	
+	/**
+	 * Find order in Orders table.
+	 * @param roomId is ID of a room.
+	 * @param customerId is ID of a customer.
+	 * @return true if found order that match with both required information.
+	 */
 	public boolean findOrderIDandUpdateStatus(int roomId, int customerId) {
 		boolean matchOrNot = false;
 		int orderID;
@@ -397,8 +462,8 @@ public class DatabaseFactory {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT ORDER_ID FROM Orders WHERE ROOM_ID = " + roomId +
 								" AND CUSTOMER_ID = " + customerId + ";");
-				
 				orderID = rs.getInt("ORDER_ID");
+				
 				if(orderID == 0) matchOrNot = false;
 				else {
 					matchOrNot = true;
@@ -417,6 +482,11 @@ public class DatabaseFactory {
 		return matchOrNot;
 	}
 	
+	/**
+	 * Get room's number from room's ID.
+	 * @param id is ID of a room.
+	 * @return A room's number.
+	 */
 	public String getRoomNumber(int id){
 		String roomId= "";
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -431,11 +501,15 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {}
-		
+		}catch(SQLException e) { }
 		return roomId;
 	}
 	
+	/**
+	 * Get's customer information from customer's ID.
+	 * @param id is ID of a customer.
+	 * @return CustomerInfo object.
+	 */
 	public CustomerInfo getCustomerInfo(int id){
 		CustomerInfo ctm = null;
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -455,11 +529,15 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {}
-		
+		}catch(SQLException e) { }
 		return ctm;
 	}
 	
+	/**
+	 * Get status of a room from room's ID.
+	 * @param id is a room's ID.
+	 * @return Status of a room.
+	 */
 	public String getRoomStatus(int id) {
 		String status = "";
 		try(Connection connect = DriverManager.getConnection(url)){
@@ -475,8 +553,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {}
-		
+		}catch(SQLException e) { }
 		return status;
 	}
 	
