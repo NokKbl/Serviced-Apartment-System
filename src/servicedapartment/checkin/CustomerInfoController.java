@@ -19,7 +19,7 @@ import servicedapartment.SwitchScene;
 import servicedapartment.data.CustomerInfo;
 
 /**
- * Control action of components in CustomerInfoUI.fxml file and 
+ * Control action of the components in CustomerInfoUI.fxml file and pass some information to next scene.
  * @author Kunyaruk Katebunlu
  */
 public class CustomerInfoController {
@@ -58,6 +58,10 @@ public class CustomerInfoController {
 	    });
 	}
 	
+	/**
+	 * Analyze the unit of time that the customer will stay then switch scene and pass the information to RoomandPayment scene.
+	 * @throws IOException if FXMLLoader cannot get resource from file.
+	 */
 	public void handleNext(ActionEvent event) throws IOException {
 		if(Integer.parseInt(stay.getText()) >= 365) this.units = "years";
 		else if (Integer.parseInt(stay.getText()) >= 30) this.units = "months";
@@ -78,7 +82,10 @@ public class CustomerInfoController {
 		window.show();
 	}
 	
-	public void handleDaysorDateOut() {
+	/**
+	 * Calculate for days stay if input day out and calculate day out if input days stay.
+	 */
+	public void handleDaysorDateOut(ActionEvent event) {
 		if(!stay.getText().equals("") && checkout.getValue() != null) { checkout.setValue(null); }
 		else if(stay.getText().equals("") && checkout.getValue() == null) { checkout.setValue(LocalDate.now().plusDays(1)); }
 		
@@ -86,7 +93,12 @@ public class CustomerInfoController {
 		else stay.setText(String.valueOf(ChronoUnit.DAYS.between(checkin.getValue(), checkout.getValue())));
 	}
 	
+	/**
+	 * Switch back to the Home scene.
+	 * @throws IOException if FXMLLoader cannot get resource from file.
+	 */
 	public void handleCancel(ActionEvent event) throws IOException {
 		newScene.switchScene(event, "HomeUI.fxml");
 	}
+	
 }

@@ -34,14 +34,14 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <ComboBox fx:id="roomTypes" layoutX="395.0" layoutY="99.0" onAction="#handleType" prefHeight="35.0" prefWidth="195.0" />
+            <ComboBox fx:id="roomTypes" layoutX="395.0" layoutY="99.0" onAction="#handleRoomType" prefHeight="35.0" prefWidth="195.0" promptText="--Select Room Type--" />
             <TableView fx:id="table" layoutX="21.0" layoutY="16.0" prefHeight="195.0" prefWidth="356.0">
               <columns>
                 <TableColumn fx:id="roomNumb" prefWidth="169.0" text="Room No." />
                 <TableColumn fx:id="roomStatus" minWidth="0.0" prefWidth="185.0" text="Room Status" />
               </columns>
             </TableView>
-            <ComboBox fx:id="paymentTypes" layoutX="158.0" layoutY="341.0" onAction="#handlePaymentType" prefHeight="35.0" prefWidth="200.0" />
+            <ComboBox fx:id="paymentTypes" layoutX="158.0" layoutY="341.0" onAction="#handlePaymentType" prefHeight="35.0" prefWidth="200.0" promptText="-Select Payment Type-" />
             <Label layoutX="21.0" layoutY="223.0" text="Payment:">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />

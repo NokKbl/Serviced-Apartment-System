@@ -28,7 +28,6 @@ public class DatabaseFactory {
 	}
 	
 	public void createDatabase() {
-		//String url = "jdbc:sqlite:" + filename;
 		try (Connection connect = DriverManager.getConnection(url)){
 			if(connect != null) {
 				Statement stm = connect.createStatement();
@@ -76,7 +75,6 @@ public class DatabaseFactory {
 	}
 	
 	public void insertDataToCustomers(CustomerInfo customer) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -99,7 +97,6 @@ public class DatabaseFactory {
 	}
 	
 	public void insertDataToRooms(RoomInfo room) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -118,7 +115,6 @@ public class DatabaseFactory {
 	}
 	
 	public void insertDataToTypes(TypeInfo type) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open db success");
@@ -166,7 +162,6 @@ public class DatabaseFactory {
 	}
 	
 	public void insertDataToPayment(PaymentInfo payment) {
-		//String url = "jdbc:sqlite:CustomerLog.db";
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
 			System.out.println("open order success");

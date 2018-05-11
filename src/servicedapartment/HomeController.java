@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 /**
- * Control action of all components in HomeUI.fxml
+ * Control action of the components in HomeUI.fxml file.
  * @author Kunyaruk Katebunlu
  */
 public class HomeController {
@@ -17,7 +17,7 @@ public class HomeController {
 	private SwitchScene newScene = new SwitchScene();
 	
 	/**
-	 * When this method is called, it will change the Scene to check in part.
+	 * When this method is called, it will switch to Check-in part.
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCheckIn(ActionEvent event) throws IOException {		
@@ -25,7 +25,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * When this method is called, it will change the Scene to checkout part.
+	 * When this method is called, it will switch to Checkout part.
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCheckOut(ActionEvent event) throws IOException {
@@ -33,7 +33,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * When this method is called, it will change the Scene to admin part.
+	 * When this method is called, it will switch to Administer part.
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleAdmin(ActionEvent event) throws IOException {

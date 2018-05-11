@@ -8,47 +8,37 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.database.DatabaseFactory;
 
+/**
+ * Control the components in EditRatesUI.fxml file and update new room rates into the database.
+ * @author Thanaphon Keawjam
+ */
 public class EditRatesController {
-	
-	@FXML
-	Button saveButton;
-	@FXML
-	Button backButton;
-	@FXML
-	TextField studioDaily;
-	@FXML
-	TextField studioWeekly;
-	@FXML
-	TextField studioMonthly;
-	@FXML
-	TextField onebrDaily;
-	@FXML
-	TextField onebrWeekly;
-	@FXML
-	TextField onebrMonthly;
-	@FXML
-	TextField twobrDaily;
-	@FXML
-	TextField twobrWeekly;
-	@FXML
-	TextField twobrMonthly;
-	@FXML
-	TextField threebrDaily;
-	@FXML
-	TextField threebrWeekly;
-	@FXML
-	TextField threebrMonthly;
-	
+	@FXML private Button saveButton;
+	@FXML private Button backButton;
+	@FXML private TextField studioDaily;
+	@FXML private TextField studioWeekly;
+	@FXML private TextField studioMonthly;
+	@FXML private TextField onebrDaily;
+	@FXML private TextField onebrWeekly;
+	@FXML private TextField onebrMonthly;
+	@FXML private TextField twobrDaily;
+	@FXML private TextField twobrWeekly;
+	@FXML private TextField twobrMonthly;
+	@FXML private TextField threebrDaily;
+	@FXML private TextField threebrWeekly;
+	@FXML private TextField threebrMonthly;
 	private SwitchScene newScene = new SwitchScene();
 	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private List<TypeInfo> list;
 	
+	/**
+	 * Initialize components.
+	 */
 	@FXML
 	public void initialize() {
 		list = factory.readDataFromRoomType();
@@ -72,12 +62,15 @@ public class EditRatesController {
 		list.clear();
 	}
 	
+	/**
+	 * Get new rates from TextField and update the rates into the database.
+	 */
 	public void handleSave(ActionEvent event) {
-		Alert alert = new Alert(AlertType.INFORMATION);
 		TypeInfo typeStd = null;
 		TypeInfo typeOne = null;
 		TypeInfo typeTwo = null;
 		TypeInfo typeThree = null;
+		
 		try {
 			typeStd = new TypeInfo("Studio", 
 							Integer.parseInt(studioDaily.getText()), 
@@ -99,9 +92,9 @@ public class EditRatesController {
 							Integer.parseInt(threebrWeekly.getText()), 
 							Integer.parseInt(threebrMonthly.getText()));
 		} catch(NumberFormatException e) {
+			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
-			alert.setHeaderText(null);
-			alert.setContentText("Please input only number");
+			alert.setContentText("Please input only number.");
 			alert.showAndWait();
 		}
 		
@@ -110,13 +103,16 @@ public class EditRatesController {
 		factory.updateDataToTypes(typeTwo);
 		factory.updateDataToTypes(typeThree);
 		
+		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Success");
-		alert.setHeaderText(null);
 		alert.setContentText("Update");
 		alert.showAndWait();
-		
 	}
 	
+	/**
+	 * Switch back to the AdminChoice scene.
+	 * @throws IOException if FXMLLoader cannot get resource from file.
+	 */
 	public void handleBack(ActionEvent event) throws IOException {
 		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
 	}

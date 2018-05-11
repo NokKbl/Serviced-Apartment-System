@@ -51,137 +51,187 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="87.0" text="Name:">
+            <Label layoutX="51.0" layoutY="67.0" text="Name:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="name" layoutX="114.0" layoutY="87.0" text="Label">
+            <Label fx:id="name" layoutX="109.0" layoutY="67.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="126.0" text="Phone no.:">
+            <Label layoutX="51.0" layoutY="106.0" text="Phone no.:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="phone" layoutX="144.0" layoutY="126.0" text="Label">
+            <Label fx:id="phone" layoutX="139.0" layoutY="106.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="57.0" layoutY="168.0" text="Email:">
+            <Label layoutX="52.0" layoutY="148.0" text="Email:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="email" layoutX="112.0" layoutY="168.0" text="Label">
+            <Label fx:id="email" layoutX="107.0" layoutY="148.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="57.0" layoutY="211.0" text="No. of Customer:">
+            <Label layoutX="52.0" layoutY="191.0" text="No. of Customer:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="amount" layoutX="205.0" layoutY="211.0" text="Label">
+            <Label fx:id="amount" layoutX="200.0" layoutY="191.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="252.0" text="Check-in Date:">
+            <Label layoutX="51.0" layoutY="232.0" text="Check-in Date:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="checkinDate" layoutX="185.0" layoutY="252.0" text="Label">
+            <Label fx:id="checkinDate" layoutX="180.0" layoutY="232.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="291.0" text="Checkout Date:">
+            <Label layoutX="51.0" layoutY="271.0" text="Checkout Date:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="checkoutDate" layoutX="191.0" layoutY="291.0" text="Label">
+            <Label fx:id="checkoutDate" layoutX="186.0" layoutY="271.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="439.0" layoutY="27.0" text="Room Information:">
+            <Label layoutX="36.0" layoutY="317.0" text="Room Information:">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="456.0" layoutY="83.0" text="Room Number:">
+            <Label layoutX="49.0" layoutY="357.0" text="Room Number:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="roomNumb" layoutX="582.0" layoutY="83.0" text="Label">
+            <Label fx:id="roomNumb" layoutX="175.0" layoutY="357.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="455.0" layoutY="122.0" text="Room Type:">
+            <Label layoutX="48.0" layoutY="396.0" text="Room Type:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="roomType" layoutX="556.0" layoutY="122.0" text="Label">
+            <Label fx:id="roomType" layoutX="149.0" layoutY="396.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="439.0" layoutY="176.0" text="Rate Information:">
+            <Label layoutX="438.0" layoutY="29.0" text="Rate Information:">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="456.0" layoutY="230.0" text="Rental Rate:">
+            <Label layoutX="455.0" layoutY="83.0" text="Rental Rate:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="rentalRate" layoutX="605.0" layoutY="230.0" text="Label">
+            <Label fx:id="rentalRate" layoutX="604.0" layoutY="83.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="456.0" layoutY="271.0" text="Stay for">
+            <Label layoutX="455.0" layoutY="124.0" text="Stay for">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="stay" layoutX="553.0" layoutY="271.0" text="Label" textAlignment="CENTER">
+            <Label fx:id="stay" alignment="CENTER" layoutX="533.0" layoutY="124.0" prefHeight="25.0" prefWidth="89.0" text="Label" textAlignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="627.0" layoutY="271.0" text="days">
+            <Label layoutX="626.0" layoutY="124.0" text="days">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="456.0" layoutY="317.0" text="Total:">
+            <Label layoutX="455.0" layoutY="170.0" text="Total:">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="515.0" layoutY="317.0" text="THB">
+            <Label layoutX="514.0" layoutY="170.0" text="THB">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="total" layoutX="562.0" layoutY="317.0" text="Label">
+            <Label fx:id="total" layoutX="561.0" layoutY="170.0" text="Label">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="563.0" layoutY="230.0" text="THB">
+            <Label layoutX="562.0" layoutY="83.0" text="THB">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="amountPaid" layoutX="608.0" layoutY="389.0" text="Label">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="456.0" layoutY="389.0" text="Amount Paid:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="transactionID" layoutX="563.0" layoutY="346.0" text="Label">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="456.0" layoutY="346.0" text="Payment ID:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="paymentType" layoutX="580.0" layoutY="304.0" text="Label">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="455.0" layoutY="304.0" text="Payment Type:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="dayPaid" layoutX="579.0" layoutY="265.0" text="Label">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="454.0" layoutY="265.0" text="Payment Date:">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="438.0" layoutY="216.0" text="Payment Information:">
+               <font>
+                  <Font name="Comic Sans MS" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="567.0" layoutY="389.0" text="THB">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
