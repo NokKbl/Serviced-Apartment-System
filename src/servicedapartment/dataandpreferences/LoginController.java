@@ -36,8 +36,9 @@ public class LoginController {
 			newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning");
-			alert.setContentText("Wrong username or password! Please try again.");
+			alert.setTitle("Warning Alert");
+			alert.setHeaderText("Wrong username or password!");
+			alert.setContentText("Username or password is incorrect. Please try again.");
 			alert.showAndWait();
 		}
 	}

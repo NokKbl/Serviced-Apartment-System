@@ -39,8 +39,8 @@ public class RoomStatusController {
 	public void initialize() {
 		date = LocalDate.now();
 		dateLabel.setText(date.toString());
-		roomNumber.setCellValueFactory(new PropertyValueFactory<>("roomNb"));
-		roomStatus.setCellValueFactory(new PropertyValueFactory<>("roomSt"));
+		roomNumber.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+		roomStatus.setCellValueFactory(new PropertyValueFactory<>("roomStatus"));
 		table.setItems(getRoomData());
 	}
 	

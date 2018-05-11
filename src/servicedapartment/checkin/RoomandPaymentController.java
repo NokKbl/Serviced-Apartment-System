@@ -104,8 +104,8 @@ public class RoomandPaymentController {
 	 * @param roomList is a list of rooms that will be add into table.
 	 */
 	public void addToTableView(List<RoomInfo> roomList) {
-		roomNumb.setCellValueFactory(new PropertyValueFactory<>("roomNb"));
-		roomStatus.setCellValueFactory(new PropertyValueFactory<>("roomSt"));
+		roomNumb.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+		roomStatus.setCellValueFactory(new PropertyValueFactory<>("roomStatus"));
 		table.setItems(getRoomData(roomList));
 		totall.setText(String.valueOf(getandCalTotal()));
 	}
@@ -284,13 +284,13 @@ public class RoomandPaymentController {
 				window.show();
 			} else {
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Room Unavailable");
+				alert.setTitle("Warning Alert");
+				alert.setHeaderText("Room Unavailable");
 				alert.setContentText("Room " + roomI.getRoomNumber()
 						+ " is on 'Occupied' state. Please choose another room with 'Vacant' state.");
 				alert.showAndWait();
 			}
-		} catch (Exception e) {
-		}
+		} catch (Exception e) { }
 	}
 
 	/**

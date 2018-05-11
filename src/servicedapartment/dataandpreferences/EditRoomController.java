@@ -28,7 +28,7 @@ public class EditRoomController {
 	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private SwitchScene newScene = new SwitchScene();
 	private Room room = new Room();
-	private String select, field, title, content;
+	private String select, field, title, content, header;
 	private RoomView view;
 	
 	/**
@@ -50,10 +50,10 @@ public class EditRoomController {
 	 * @param title is a text that will be set as title of Alert.
 	 * @param content is a text that will show as an information content in Alert.
 	 */
-	public void showInformationAlert(String title, String content) {
+	public void showInformationAlert(String title, String header, String content) {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		
 		alert.setTitle(title);
+		alert.setHeaderText(header);
 		alert.setContentText(content);
 		alert.showAndWait();
 	}
@@ -63,10 +63,10 @@ public class EditRoomController {
 	 * @param title is a text that will be set as title of Alert.
 	 * @param content is a text that will show as a warning content in Alert.
 	 */
-	public void showWarningAlert(String title, String content) {
+	public void showWarningAlert(String title, String header, String content) {
 		Alert alert = new Alert(AlertType.WARNING);
-		
 		alert.setTitle(title);
+		alert.setHeaderText(header);
 		alert.setContentText(content);
 		alert.showAndWait();
 	}
@@ -82,9 +82,10 @@ public class EditRoomController {
 		
 		for(RoomInfo x : data) {
 			if(field.equals(x.getRoomNumb())) {
-				title = "Warning";
+				title = "Warning Alert";
+				header = "Room already exists.";
 				content = "Sorry, room number " + field + " already exists.";
-				showWarningAlert(title, content);
+				showWarningAlert(title, header, content);
 				return;
 			}
 		}
@@ -106,9 +107,10 @@ public class EditRoomController {
 			factory.insertDataToRooms(addRoom);
 			view.run();
 			
-			title = "Success";
-			content = "Room number "+ field +" added successfully.";
-			showInformationAlert(title, content);
+			title = "Information Alert";
+			header = "Successfully added";
+			content = "Room number "+ field +" has been added successfully.";
+			showWarningAlert(title, header, content);
 		}
 	}
 	
@@ -123,9 +125,10 @@ public class EditRoomController {
 		
 		for(RoomInfo x : data) {
 			if(!field.equals(x.getRoomNumb())) {
-				title = "Warning";
+				title = "Warning Alert";
+				header = "Room doesn't exist.";
 				content = "Room number" + field + " doesn't exist. Please input an exists room number.";
-				showWarningAlert(title, content);
+				showWarningAlert(title, header, content);
 				return;
 			}
 		}
@@ -146,10 +149,10 @@ public class EditRoomController {
 			RoomInfo delRoom = new RoomInfo(field, typeId);
 			factory.deleteDataFromRoom(delRoom);
 			view.run();
-			
-			title = "Success";
-			content = "Room number "+ field +" removed successfully.";
-			showInformationAlert(title, content);
+			title = "Information Alert";
+			header = "Successfully removed";
+			content = "Room number "+ field +" has been removed successfully.";
+			showWarningAlert(title, header, content);
 		}	
 	}
 	

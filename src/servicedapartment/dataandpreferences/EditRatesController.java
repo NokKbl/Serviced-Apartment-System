@@ -93,7 +93,8 @@ public class EditRatesController {
 							Integer.parseInt(threebrMonthly.getText()));
 		} catch(NumberFormatException e) {
 			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning");
+			alert.setTitle("Warning Alert");
+			alert.setHeaderText("Value type not match.");
 			alert.setContentText("Please input only number.");
 			alert.showAndWait();
 		}
@@ -104,8 +105,9 @@ public class EditRatesController {
 		factory.updateDataToTypes(typeThree);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Success");
-		alert.setContentText("Update");
+		alert.setTitle("Information Alert");
+		alert.setHeaderText("Update successful");
+		alert.setContentText("Rental rates has successfully updated.");
 		alert.showAndWait();
 	}
 	

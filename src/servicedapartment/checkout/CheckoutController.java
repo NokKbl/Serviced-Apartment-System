@@ -29,7 +29,6 @@ public class CheckoutController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCheckout(ActionEvent event) throws IOException {
-		Alert alert = new Alert(AlertType.INFORMATION);
 		String roomNumber = roomNumField.getText().trim();
 		String customerName = nameField.getText().trim();
 		int roomID = factory.getRoomID(roomNumber);
@@ -37,19 +36,22 @@ public class CheckoutController {
 		boolean matchOrNot = factory.findOrderIDandUpdateStatus(roomID, customerID);
 	
 		if(roomNumber.isEmpty() || customerName.isEmpty()) {
-			alert.setTitle("Warning");
-			alert.setHeaderText(null);
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning Alert");
+			alert.setHeaderText("Blank field");
 			alert.setContentText("Please input both room number and customer name.");
 			alert.showAndWait();
 		} else if(matchOrNot) {
-			alert.setTitle("Checkout successful");
-			alert.setHeaderText(null);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Information Alert");
+			alert.setHeaderText("Checkout successful");
 			alert.setContentText("This order has successfully checked out.");
 			alert.showAndWait();
 			newScene.switchScene(event, "HomeUI.fxml");
 		} else {
-			alert.setTitle("Checkout falied");
-			alert.setHeaderText(null);
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning Alert");
+			alert.setHeaderText("Checkout falied");
 			alert.setContentText("Sorry, no orders match with these information.");
 			alert.showAndWait();
 			roomNumField.clear();
