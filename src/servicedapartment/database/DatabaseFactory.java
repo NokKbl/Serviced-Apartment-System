@@ -16,6 +16,11 @@ import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.TypeInfo;
 
+/**
+ * A class that create, insert, update, delete the data in database file.
+ * @author Kunyaruk Katebunlu
+ * @author Thanaphon Keawjam
+ */
 public class DatabaseFactory {
 	private static DatabaseFactory factory;
 	private final String url = "jdbc:sqlite:CustomerLog.db";
@@ -88,7 +93,6 @@ public class DatabaseFactory {
 	public void insertDataToCustomers(CustomerInfo customer) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open db success");
 			if(connect != null) {
 				String data = "INSERT INTO Customers (CUSTOMER_NAME, PHONE_NUMBER, EMAIL) VALUES (?, ?, ?);";
 				PreparedStatement pstm = connect.prepareStatement(data);
@@ -100,11 +104,8 @@ public class DatabaseFactory {
 				pstm.close();
 				connect.commit();
 				connect.close();
-				System.out.println("write customer success");
 			}
-		} catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		} catch(SQLException e) { }
 	}
 	
 	/**
@@ -114,7 +115,6 @@ public class DatabaseFactory {
 	public void insertDataToRooms(RoomInfo room) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open db success");
 			if(connect != null) {
 				String data = "INSERT INTO Rooms (ROOM_NUMBER, TYPE_ID) VALUES (?, ?);";
 				PreparedStatement pstm = connect.prepareStatement(data);
@@ -126,7 +126,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 	}
 	
 	/**
@@ -136,7 +136,6 @@ public class DatabaseFactory {
 	public void insertDataToTypes(TypeInfo type) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open db success");
 			if(connect != null) {
 				String data = "INSERT INTO Room_Types (ROOM_TYPE, PRICE_DAY, PRICE_WEEK, PRICE_MONTH) VALUES (?, ?, ?, ?);";
 				PreparedStatement pstm = connect.prepareStatement(data);
@@ -150,7 +149,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 	}
 	
 	/**
@@ -160,7 +159,6 @@ public class DatabaseFactory {
 	public void insertDataToOrders(OrderInfo order) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open order success");
 			if(connect != null) {
 				String data = "INSERT INTO Orders (ROOM_ID, CUSTOMER_ID, PAYMENT_ID, TOTAL_PRICE, DAYS_STAY, PEOPLE, DAY_IN, DAY_OUT, ROOM_STATUS) "
 								+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -179,9 +177,8 @@ public class DatabaseFactory {
 				pstm.close();
 				connect.commit();
 				connect.close();
-				System.out.println("write order success");
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 	}
 	
 	/**
@@ -191,7 +188,6 @@ public class DatabaseFactory {
 	public void insertDataToPayment(PaymentInfo payment) {
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open order success");
 			if(connect != null) {
 				String data = "INSERT INTO Payments (DAY_PAID, AMOUNT_PAID, PAYMENT_TYPE, TRANSACTION_ID) VALUES (?, ?, ?, ?);";
 				PreparedStatement pstm = connect.prepareStatement(data);
@@ -203,10 +199,8 @@ public class DatabaseFactory {
 				pstm.executeUpdate();
 				pstm.close();
 				connect.commit();
-				connect.close();
-				System.out.println("write order success");
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 	}
 	
 	/**
@@ -218,7 +212,6 @@ public class DatabaseFactory {
 		RoomInfo roomInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open room table success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM Rooms;");
@@ -233,9 +226,8 @@ public class DatabaseFactory {
 				rs.close();
 				stm.close();
 				connect.close();
-				System.out.println("read room success");
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 		return allRoomInfo;
 	}
 
@@ -248,7 +240,6 @@ public class DatabaseFactory {
 		TypeInfo type = null;
 		try (Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open type table success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM Room_Types;");
@@ -265,9 +256,8 @@ public class DatabaseFactory {
 				rs.close();
 				stm.close();
 				connect.close();
-				System.out.println("read type success");
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 		return list;
 	}
 	
@@ -280,7 +270,6 @@ public class DatabaseFactory {
 		OrderInfo orderInfo = null;
 		try(Connection connect = DriverManager.getConnection(url)){
 			connect.setAutoCommit(false);
-			System.out.println("open orders table success");
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT * FROM Orders;");
@@ -302,9 +291,8 @@ public class DatabaseFactory {
 				rs.close();
 				stm.close();
 				connect.close();
-				System.out.println("read orders success");
 			}
-		} catch(SQLException e) {System.out.println(e.getMessage()); }
+		} catch(SQLException e) { }
 		return allOrders;
 	}
 
@@ -327,7 +315,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 		return id;
 	}
 	
@@ -350,7 +338,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 		return id;
 	}
 	
@@ -374,7 +362,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) {System.out.println(e.getMessage()); }
+		}catch(SQLException e) { }
 		return id;
 	}
 	
@@ -395,7 +383,7 @@ public class DatabaseFactory {
 				connect.close();
 				stm.close();
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 	}
 	
 	/**
@@ -414,7 +402,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 	}
 	
 	/**
@@ -442,7 +430,7 @@ public class DatabaseFactory {
 				stm.close();
 				connect.close();
 			}
-		} catch(SQLException e) { System.out.println(e.getMessage());}
+		} catch(SQLException e) { }
 		return dateIO;
 	}
 	
@@ -478,7 +466,7 @@ public class DatabaseFactory {
 				connect.commit();
 				connect.close();
 			}
-		}catch(SQLException e) { System.out.println(e.getMessage());}
+		}catch(SQLException e) { }
 		return matchOrNot;
 	}
 	
@@ -517,11 +505,9 @@ public class DatabaseFactory {
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT CUSTOMER_NAME, PHONE_NUMBER, EMAIL FROM Customers WHERE CUSTOMER_ID = " + id + ";");
-				
 				String name = rs.getString("CUSTOMER_NAME");
 				String phone = rs.getString("PHONE_NUMBER");
 				String email = rs.getString("EMAIL");
-				
 				ctm = new CustomerInfo(name, phone, email);
 				
 				rs.close();
@@ -545,7 +531,6 @@ public class DatabaseFactory {
 			if(connect != null) {
 				Statement stm = connect.createStatement();
 				ResultSet rs = stm.executeQuery("SELECT ROOM_STATUS FROM Orders WHERE ROOM_ID = " + id + ";");
-				
 				status = rs.getString("ROOM_STATUS");
 				
 				rs.close();
