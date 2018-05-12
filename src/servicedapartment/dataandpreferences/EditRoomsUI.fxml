@@ -27,7 +27,7 @@
                </font>
             </Label>
             <ComboBox fx:id="roomBox" layoutX="57.0" layoutY="81.0" prefHeight="42.0" prefWidth="241.0" promptText="------ Select Room Type ------" />
-            <TextField fx:id="textField" alignment="CENTER" layoutX="337.0" layoutY="82.0" prefHeight="40.0" prefWidth="187.0" promptText="input room number">
+            <TextField fx:id="textField" alignment="CENTER" layoutX="337.0" layoutY="82.0" prefHeight="40.0" prefWidth="187.0" promptText="Input room number">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font></TextField>

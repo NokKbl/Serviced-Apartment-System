@@ -15,7 +15,7 @@
          <children>
             <Label text="Rental Rates">
                <font>
-                  <Font name="Comic Sans MS" size="36.0" />
+                  <Font name="Comic Sans MS" size="48.0" />
                </font>
             </Label>
             <TabPane prefHeight="310.0" prefWidth="565.0" tabClosingPolicy="UNAVAILABLE">
