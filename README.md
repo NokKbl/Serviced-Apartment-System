@@ -14,7 +14,7 @@
 
 ### Administer Part
 
-#### Demo username and password
+- Demo username and password
 ---------------------------------
 | **Username** |  **Password**  |
 ---------------------------------
