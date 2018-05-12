@@ -10,28 +10,25 @@
 **Serviced Apartment System** application is an application that will be use by clerks and administer/owner of any serviced apartment with four types of room (Studio, 1-Bedroom, 2-Bedroom and 3-Bedroom). This application can be separate in three main parts which are check-in, checkout and administer part.
 
 ### Check-in Part
+**In Check-in part**, the clerk will get all required information and put into the fields in first window then ask about room type and payment information from the customer. If press 'Check In' button in order's summary window, all information of an order will be save into the database. 
 
 ![checkin](source/chin.png)
 
-**In Check-in part**, the clerk will get all required information and put into the fields in first window then ask about room type and payment information from the customer. If press 'Check In' button in order's summary window, all information of an order will be save into the database. 
-
 ### Checkout Part
+**In Checkout part**, the clerk will ask the customer for room number and the customer name and use to search for an order that match with the required information in the database. If it can be identical, the checkout will be successful and room status will be change into vacant state.
 
 ![checkout](source/cout.png)
 
-**In Checkout part**, the clerk will ask the customer for room number and the customer name and use to search for an order that match with the required information in the database. If it can be identical, the checkout will be successful and room status will be change into vacant state.
-
 ### Administer Part
-
-![admin](source/admn.png)
-
 **In Administer part**, user need to input the correct username and password before use this part. This part will let the administer(owner) be able to edit room rates, add/remove rooms, view room status in each day and able to view all order's history.
 
 - Demo username and password
 
-| **Username** |  **Password**  |
+|**Username**  |**Password**    |
 |:-------------|---------------:|
 | admin        | 123456admin    |
+
+![admin](source/admn.png)
 
 ### Packages
 - **checkin** - Contains controller classes and user interface documents for check-in part.
@@ -54,28 +51,30 @@
 
 - Docs: http://www.threeten.org/threeten-extra/apidocs/index.html?org.threeten.extra-summary.html
 - Website: http://www.threeten.org/threeten-extra/
+- See also: https://github.com/ThreeTen/threeten-extra
 
 ### Patterns
+In this program, we use...
 - **Singleton Pattern**: Use for data manager which will do all activities that related with database.
 - **Observer Pattern**: Use to show an update after the administer(owner) add/remove room in Administer part.
 
 ## Installation
-To run this application, your computer need:
+To run this application, your computer need...
  - Java version 8 or newer
  - Serviced Apartment Application.jar file
  
 ### How to run
-**Run a JAR file**
- 1. Download a runnable JAR file named 'Serviced Apartment Application.jar' or 'Serviced Apartment System.zip' in a  Download folder above or click the link below.
+#### **Option 1: Run a JAR file**
+ 1. Download a runnable JAR file named 'Serviced Apartment Application.jar' or 'Serviced Apartment System.zip' from the links below.
  2. Runs 'Serviced Apartment Application.jar' file.
  
 **Download links:**
  - JAR file: [Serviced Apartment Application.jar](https://github.com/NokKbl/Serviced-Apartment-System/blob/master/Download/Serviced%20Apartment%20Application.jar)
  - ZIP file: [Serviced Apartment System.zip](https://github.com/NokKbl/Serviced-Apartment-System/blob/master/Download/Serviced%20Apartment%20System.zip)
  
-**Compile by IDE(i.e. eclipse)**
- 1. Download a ZIP file of this project from the link below then extract and open this project in your IDE.
- 2. Add the Referenced Libraries (can download from the links below).
+#### **Option 2: Compile by IDE(i.e. eclipse)**
+ 1. Download a ZIP file of this project from a link below then extract the file and open in your IDE.
+ 2. Add the Referenced Libraries (can be download from the links below).
  3. Run 'Main.java' class.
 
 **Download links:**
