@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import servicedapartment.SwitchScene;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.database.DatabaseFactory;
 
@@ -116,7 +116,7 @@ public class EditRatesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 	}
 
 }

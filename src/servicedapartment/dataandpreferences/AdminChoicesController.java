@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import servicedapartment.SwitchScene;
+import servicedapartment.data.SwitchScene;
 
 /**
  * Control action of the components in AdminChoicesUI.fxml file.
@@ -24,7 +24,7 @@ public class AdminChoicesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleEdit(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/EditRatesUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/EditRatesUI.fxml");
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class AdminChoicesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleEditRoom(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/EditRoomsUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/EditRoomsUI.fxml");
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class AdminChoicesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleHistory(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/HistoryUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/HistoryUI.fxml");
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class AdminChoicesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleRoomStatus(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/RoomStatusUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/RoomStatusUI.fxml");
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class AdminChoicesController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleLogout(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/LoginUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/LoginUI.fxml");
 	}
 	
 }

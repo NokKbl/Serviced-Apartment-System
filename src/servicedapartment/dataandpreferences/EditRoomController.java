@@ -11,8 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.RoomInfo;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.database.DatabaseFactory;
 
 /**
@@ -36,7 +36,7 @@ public class EditRoomController {
 	 */
 	@FXML
 	public void initialize() {
-		roomBox.getItems().addAll("Studio Room", "1-Bed Room", "2-Bed Room", "3-Bed Room");
+		roomBox.getItems().addAll("Studio Room", "1-Bedroom", "2-Bedroom", "3-Bedroom");
 		roomBox.setStyle("-fx-font: 18px \"Comic Sans MS\";");
 		roomBox.getSelectionModel().select(0);
 		
@@ -93,11 +93,11 @@ public class EditRoomController {
 		switch (select) {
 		case "Studio Room": typeId = 1;
 			break;
-		case "1-Bed Room": typeId = 2;
+		case "1-Bedroom": typeId = 2;
 			break;
-		case "2-Bed Room": typeId = 3;
+		case "2-Bedroom": typeId = 3;
 			break;
-		case "3-Bed Room": typeId = 4;
+		case "3-Bedroom": typeId = 4;
 			break;
 		default: break;
 		}
@@ -136,11 +136,11 @@ public class EditRoomController {
 		switch(select) {
 		case "Studio Room": typeId = 1;
 			break;
-		case "1-Bed Room": typeId = 2;
+		case "1-Bedroom": typeId = 2;
 			break;
-		case "2-Bed Room": typeId = 3;
+		case "2-Bedroom": typeId = 3;
 			break;
-		case "3-Bed Room": typeId = 4;
+		case "3-Bedroom": typeId = 4;
 			break;
 		default: break;
 		}
@@ -161,7 +161,7 @@ public class EditRoomController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 		view.exit();
 	}
 	

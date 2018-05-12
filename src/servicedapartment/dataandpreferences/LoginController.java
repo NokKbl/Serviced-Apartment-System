@@ -6,10 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import servicedapartment.data.SwitchScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import servicedapartment.SwitchScene;
 
 /**
  * Control the components in LoginUI.fxml file and check required input to go to next scene.
@@ -33,7 +33,7 @@ public class LoginController {
 		String password = passwordField.getText();
 		
 		if(username.equals(USERNAME) && password.equals(PASSWORD)) {
-			newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
+			newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning Alert");
@@ -48,7 +48,7 @@ public class LoginController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 
 }

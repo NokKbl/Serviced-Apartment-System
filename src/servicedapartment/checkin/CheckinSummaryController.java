@@ -9,12 +9,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.OrderInfo;
 import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.database.DatabaseFactory;
 
 /**
@@ -105,11 +105,12 @@ public class CheckinSummaryController {
 		factory.insertDataToOrders(orderInfo);
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Check in successful");
+		alert.setTitle("Information Alert");
+		alert.setHeaderText("Check in successful");
 		alert.setContentText("This order has successfully recorded.");
 		alert.showAndWait();
 		
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 	
 	/**
@@ -117,7 +118,7 @@ public class CheckinSummaryController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCancel(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 	
 }

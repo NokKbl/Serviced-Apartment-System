@@ -15,8 +15,8 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.CustomerInfo;
+import servicedapartment.data.SwitchScene;
 
 /**
  * Control action of the components in CustomerInfoUI.fxml file and pass some information to next scene.
@@ -97,7 +97,7 @@ public class CustomerInfoController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCancel(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 	
 }

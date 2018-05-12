@@ -11,10 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.CustomerInfo;
 import servicedapartment.data.HistoryInfo;
 import servicedapartment.data.OrderInfo;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.database.DatabaseFactory;
 
 /**
@@ -101,7 +101,7 @@ public class HistoryController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 	}
 
 }

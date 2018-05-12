@@ -24,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.TypeInfo;
 import servicedapartment.database.DatabaseFactory;
 import servicedapartment.data.CustomerInfo;
@@ -33,6 +32,7 @@ import servicedapartment.data.OrderInfo;
 import servicedapartment.data.PaymentInfo;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.StatusTableRow;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.data.TransactionCash;
 
 /**
@@ -83,6 +83,8 @@ public class RoomandPaymentController {
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.unit = unit;
+		
+		dPaid.setPromptText(String.valueOf(LocalDate.now()));
 		trId.setVisible(false);
 		trLb.setVisible(false);
 
@@ -91,12 +93,6 @@ public class RoomandPaymentController {
 
 		String[] pmTypes = { "Cash", "Credit Cards", "e-Payment" };
 		paymentTypes.getItems().addAll(pmTypes);
-
-		List<RoomInfo> typeR = new ArrayList<>();
-		for (RoomInfo roomInfo : roomsI) {
-			if (roomInfo.getRoomNumb().startsWith("1")) typeR.add(roomInfo);
-		}
-		addToTableView(typeR);
 	}
 
 	/**
@@ -215,19 +211,19 @@ public class RoomandPaymentController {
 
 		if (roomTypes.getValue().equalsIgnoreCase("Studio")) {
 			for (RoomInfo roomInfo : roomsI) {
-				if (roomInfo.getRoomNumb().startsWith("1")) typeR.add(roomInfo);
+				if (roomInfo.getTypeId() == 1) typeR.add(roomInfo);
 			}
 		} else if (roomTypes.getValue().equalsIgnoreCase("1-Bedroom")) {
 			for (RoomInfo roomInfo : roomsI) {
-				if (roomInfo.getRoomNumb().startsWith("2")) typeR.add(roomInfo);
+				if (roomInfo.getTypeId() == 2) typeR.add(roomInfo);
 			}
 		} else if (roomTypes.getValue().equalsIgnoreCase("2-Bedroom")) {
 			for (RoomInfo roomInfo : roomsI) {
-				if (roomInfo.getRoomNumb().startsWith("3")) typeR.add(roomInfo);
+				if (roomInfo.getTypeId() == 3) typeR.add(roomInfo);
 			}
 		} else {
 			for (RoomInfo roomInfo : roomsI) {
-				if (roomInfo.getRoomNumb().startsWith("4")) typeR.add(roomInfo);
+				if (roomInfo.getTypeId() == 4) typeR.add(roomInfo);
 			}
 		}
 		addToTableView(typeR);
@@ -262,7 +258,8 @@ public class RoomandPaymentController {
 		try {
 			StatusTableRow roomI = table.getSelectionModel().getSelectedItem();
 
-			if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
+			if(dPaid.getValue().equals(null) || trId.getText().isEmpty() || paid.getText().isEmpty()) { }
+			else if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
 				for (RoomInfo roomInfo : roomsI) {
 					if (roomI.getRoomNumber().equalsIgnoreCase(roomInfo.getRoomNumb()))
 						this.roomInfo = roomInfo;
@@ -290,7 +287,13 @@ public class RoomandPaymentController {
 						+ " is on 'Occupied' state. Please choose another room with 'Vacant' state.");
 				alert.showAndWait();
 			}
-		} catch (Exception e) { }
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning Alert");
+			alert.setHeaderText("Incomplete required information");
+			alert.setContentText("Please input ALL required information before click 'Next'.");
+			alert.showAndWait();
+		}
 	}
 
 	/**
@@ -298,7 +301,7 @@ public class RoomandPaymentController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleCancel(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 
 }

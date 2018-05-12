@@ -13,9 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import servicedapartment.SwitchScene;
 import servicedapartment.data.RoomInfo;
 import servicedapartment.data.StatusTableRow;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.database.DatabaseFactory;
 
 /**
@@ -71,7 +71,7 @@ public class RoomStatusController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "dataandpreferences/AdminChoicesUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 	}
 
 }

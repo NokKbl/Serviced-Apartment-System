@@ -1,4 +1,4 @@
-package servicedapartment;
+package servicedapartment.data;
 
 import java.io.IOException;
 

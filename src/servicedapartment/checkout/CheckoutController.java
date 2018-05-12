@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import servicedapartment.SwitchScene;
+import servicedapartment.data.SwitchScene;
 import servicedapartment.database.DatabaseFactory;
 
 /**
@@ -47,7 +47,7 @@ public class CheckoutController {
 			alert.setHeaderText("Checkout successful");
 			alert.setContentText("This order has successfully checked out.");
 			alert.showAndWait();
-			newScene.switchScene(event, "HomeUI.fxml");
+			newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning Alert");
@@ -64,7 +64,7 @@ public class CheckoutController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleBack(ActionEvent event) throws IOException {
-		newScene.switchScene(event, "HomeUI.fxml");
+		newScene.switchScene(event, "/servicedapartment/home/HomeUI.fxml");
 	}
 	
 }
