@@ -58,7 +58,7 @@
                   <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="trId" layoutX="175.0" layoutY="404.0" prefHeight="37.0" prefWidth="175.0">
+            <TextField fx:id="trId" layoutX="175.0" layoutY="404.0" prefHeight="37.0" prefWidth="175.0" promptText="Transaction id">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -68,7 +68,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="paid" layoutX="436.0" layoutY="404.0" prefHeight="37.0" prefWidth="155.0">
+            <TextField fx:id="paid" alignment="CENTER" layoutX="436.0" layoutY="404.0" prefHeight="37.0" prefWidth="155.0" promptText="xxxxxx">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
