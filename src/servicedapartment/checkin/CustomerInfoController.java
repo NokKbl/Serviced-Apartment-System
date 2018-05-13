@@ -69,15 +69,23 @@ public class CustomerInfoController {
 		alert.setTitle("Warning Alert");
 
 		if(Integer.parseInt(amount.getText()) < 1) {
-			alert.setHeaderText("Impossible!");
+			alert.setHeaderText("Impossible amount!");
 			alert.setContentText("The customer need to have at least one person.");
 			alert.showAndWait();
-		} else if(name.getText().isEmpty() || phone.getText().isEmpty() || email.getText().isEmpty() || stay.getText().isEmpty() ||
-				amount.getText().isEmpty() || checkin.getValue().equals(null) || checkout.getValue().equals(null)) {
+		} else if(name.getText().trim().isEmpty() || phone.getText().trim().isEmpty() || email.getText().trim().isEmpty() || stay.getText().trim().isEmpty() ||
+				amount.getText().trim().isEmpty() || checkin.getValue().equals(null) || checkout.getValue().equals(null)) {
 			alert.setHeaderText("Incomplete required information");
-			alert.setContentText("Please input ALL required information before click 'Next'.");
+			alert.setContentText("Please input ALL required information.");
 			alert.showAndWait();
-		}else {
+		} else if(!checkin.getValue().plusDays(Integer.parseInt(stay.getText())).isEqual(checkout.getValue()) || 
+				ChronoUnit.DAYS.between(checkin.getValue(), checkout.getValue()) != Integer.parseInt(stay.getText())) {
+			alert.setHeaderText("No. of days stay and checkout date are not match.");
+			alert.setContentText("Please input No. of days stay or checkout date again.");
+			alert.showAndWait();
+			stay.clear();
+			checkin.setValue(null);
+			checkout.setValue(null);
+		} else {
 			if(Integer.parseInt(stay.getText()) >= 365) this.units = "years";
 			else if (Integer.parseInt(stay.getText()) >= 30) this.units = "months";
 			else if (Integer.parseInt(stay.getText()) >= 7) this.units = "weeks";
@@ -104,10 +112,13 @@ public class CustomerInfoController {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Warning Alert");
 		
-		if(!stay.getText().equals("") && checkout.getValue() != null) { checkout.setValue(null); }
-		else if(stay.getText().equals("") && checkout.getValue() == null) {
+		if(!stay.getText().equals("") && checkout.getValue() != null) {
+			alert.setHeaderText("Choose only one information to input.");
+			alert.setContentText("Please input number of days stay OR date out.");
+			alert.showAndWait();
+		} else if(stay.getText().equals("") && checkout.getValue() == null) {
 			alert.setHeaderText("Incomplete required information");
-			alert.setContentText("Please input number of days OR date out.");
+			alert.setContentText("Please input number of days stay or date out.");
 			alert.showAndWait();
 		}
 		
@@ -116,18 +127,18 @@ public class CustomerInfoController {
 				checkout.setValue(checkin.getValue().plusDays(Integer.parseInt(stay.getText())));
 			}else {
 				alert.setHeaderText("Impossible!");
-				alert.setContentText("Please input valid amount of day.");
+				alert.setContentText("Please input possible amount of date.");
 				alert.showAndWait();
 				stay.clear();
 			}
-		}
-		else {
+		}else {
 			if(ChronoUnit.DAYS.between(checkin.getValue(), checkout.getValue()) > 0) {
 				stay.setText(String.valueOf(ChronoUnit.DAYS.between(checkin.getValue(), checkout.getValue())));
 			} else {
 				alert.setHeaderText("Impossible!");
 				alert.setContentText("Please input valid date out.");
 				alert.showAndWait();
+				checkout.setValue(null);
 			}
 		}
 	}

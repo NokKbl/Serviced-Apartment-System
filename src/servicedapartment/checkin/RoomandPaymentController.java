@@ -268,7 +268,7 @@ public class RoomandPaymentController {
 				alert.showAndWait();
 			} else if(Integer.parseInt(paid.getText()) < this.total || dPaid.getValue().isAfter(checkin)) {
 				alert.setHeaderText("Please tell the customer");
-				alert.setContentText("The customer need to done the payment before check-in.");
+				alert.setContentText("The customer need to done the payment and paid full rate before check-in.");
 				alert.showAndWait();
 			} else if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
 				for (RoomInfo roomInfo : roomsI) {
