@@ -3,6 +3,7 @@
 - [About the Application](#about-the-application)
 - [Technology and Knowledge](#new-technology-and-knowledge-that-we-have-learned)
 - [Installation](#installation)
+- [UML of this project](https://raw.githubusercontent.com/NokKbl/Serviced-Apartment-System/master/UML/Serviced-Apartment-SystemUML.png)
 - [Contributors](#contributors)
 - [References](#references)
 
@@ -24,7 +25,7 @@
 
 **Demo username and password**
 
-|Username      | Password         |
+> |Username      | Password         |
 |--------------|------------------|
 | admin        | 123456admin      |
 
@@ -39,6 +40,34 @@
 - **home** - Contains controller class and user interface document for home part.
 
 ## New Technology and Knowledge that we have learned
+### ThreeTen-Extra
+**ThreeTen-Extra** provides additional date-time classes that complement those in JDK 8.
+
+Not every piece of date/time logic is destined for the JDK. Some concepts are too specialized or too bulky to make it in. This project provides some of those additional classes as a well-tested and reliable jar.
+
+In our project, we've used **Interval** class which represents the time on the time-line between two **Instants** (start and end instants) and other useful methods to check that the time is overlap or not to give a state to rooms.
+- See also: http://www.threeten.org/threeten-extra/apidocs/org/threeten/extra/Interval.html
+
+This is some code sample from our project:
+```java
+public boolean checkOverlap(String startA, String endA, String startB, String endB) {
+	// create start/end instants and first interval.
+	Instant instantStartA = Instant.parse(startA);
+	Instant instantEndA = Instant.parse(endA);
+	Interval A = Interval.of(instantStartA, instantEndA);
+	// create another start/end instants and second interval.
+	Instant instantStartB = Instant.parse(startB);
+	Instant instantEndB = Instant.parse(endB);
+	Interval B = Interval.of(instantStartB, instantEndB);
+	// use the intervals to check date/time overlap.
+	return A.overlaps(B) || A.encloses(B) || B.encloses(A) || A.equals(B);
+}
+```
+> **For more information about ThreeTen-Extra:**
+- Documentation: http://www.threeten.org/threeten-extra/apidocs/index.html?org.threeten.extra-summary.html
+- Website: http://www.threeten.org/threeten-extra/
+- See also: https://github.com/ThreeTen/threeten-extra
+
 ### Database
 We've used **Database** which is a better choice to save the data instead of a file because it can query data, handle very large data sets and look up data from a database rapidly.
 
@@ -140,38 +169,10 @@ public void insertDataToRooms(RoomInfo room) {
 	} catch(SQLException e) { }
 }
 ```
-**For more information about SQLite:**
+> **For more information about SQLite:**
 - Documentation: https://www.sqlite.org/docs.html
 - Website: https://www.sqlite.org/index.html
 - See also: https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html
-
-### ThreeTen-Extra
-**ThreeTen-Extra** provides additional date-time classes that complement those in JDK 8.
-
-Not every piece of date/time logic is destined for the JDK. Some concepts are too specialized or too bulky to make it in. This project provides some of those additional classes as a well-tested and reliable jar.
-
-In our project, we've used **Interval** class which represents the time on the time-line between two **Instants** (start and end instants) and other useful methods to check that the time is overlap or not to give a state to rooms.
-- See also: http://www.threeten.org/threeten-extra/apidocs/org/threeten/extra/Interval.html
-
-This is some code sample from our project:
-```java
-public boolean checkOverlap(String startA, String endA, String startB, String endB) {
-	// create start/end instants and first interval.
-	Instant instantStartA = Instant.parse(startA);
-	Instant instantEndA = Instant.parse(endA);
-	Interval A = Interval.of(instantStartA, instantEndA);
-	// create another start/end instants and second interval.
-	Instant instantStartB = Instant.parse(startB);
-	Instant instantEndB = Instant.parse(endB);
-	Interval B = Interval.of(instantStartB, instantEndB);
-	// use the intervals to check date/time overlap.
-	return A.overlaps(B) || A.encloses(B) || B.encloses(A) || A.equals(B);
-}
-```
-**For more information about ThreeTen-Extra:**
-- Documentation: http://www.threeten.org/threeten-extra/apidocs/index.html?org.threeten.extra-summary.html
-- Website: http://www.threeten.org/threeten-extra/
-- See also: https://github.com/ThreeTen/threeten-extra
 
 ### TableView
 In our project, we decided to show order's history or room number with room's status by put those information in form of table to make them easy to see.
@@ -192,7 +193,7 @@ This is the code sample from JavaFx API for create a TableView:
 ```
 **Note:** This example and our project used an **ObservableList** because it is the simplest way of showing data in a TableView.
 
-**See also:**
+> **See also:**
 - Documentation for TableView: https://docs.oracle.com/javase/8/javafx/api/toc.htm
 - Documentation for TableColumn: https://docs.oracle.com/javase/8/javafx/api/toc.htm
 
@@ -210,7 +211,7 @@ To run this application, your computer need...
  1. Download a runnable JAR file named 'Serviced Apartment Application.jar' or 'Serviced Apartment System.zip' from the links below.
  2. Run 'Serviced Apartment Application.jar' file.
  
-**Download links:**
+> **Download links:**
  - JAR file: [Serviced Apartment Application.jar](https://github.com/NokKbl/Serviced-Apartment-System/blob/master/Download/Serviced%20Apartment%20Application.jar)
  - ZIP file: [Serviced Apartment System.zip](https://github.com/NokKbl/Serviced-Apartment-System/blob/master/Download/Serviced%20Apartment%20System.zip)
  
@@ -219,7 +220,7 @@ To run this application, your computer need...
  2. Add the Referenced Libraries (can be download from the links below).
  3. Run 'Main.java' class.
 
-**Download links:**
+> **Download links:**
 - Click [here](https://github.com/NokKbl/Serviced-Apartment-System/archive/master.zip) to download ZIP file of this project.
 - Click [here](https://github.com/NokKbl/Serviced-Apartment-System/tree/master/source/Library%20JAR%20file) to go to 'source/Library JAR file' folder.
 - Click [here](https://bitbucket.org/xerial/sqlite-jdbc/downloads/) to go to download sqlite-jdbc Library website.
