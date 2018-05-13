@@ -195,12 +195,12 @@ This is the code sample from JavaFx API for create a TableView:
 > - Documentation for TableView: https://docs.oracle.com/javase/8/javafx/api/toc.htm
 > - Documentation for TableColumn: https://docs.oracle.com/javase/8/javafx/api/toc.htm
 
-### Patterns
+### Design Patterns
 - **Singleton Pattern**: Use for data manager which will do all activities that related with database.
 - **Observer Pattern**: Use to show an update after the administer(owner) add/remove room in Administer part.
 
 ## Installation
-To run this application, your computer need...
+To run this application, your computer need
  - Java version 8 or newer
  - Serviced Apartment Application.jar file
  
