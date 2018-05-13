@@ -255,16 +255,25 @@ public class RoomandPaymentController {
 	 * @throws IOException if FXMLLoader cannot get resource from file.
 	 */
 	public void handleNext(ActionEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Warning Alert");
+		this.total = getandCalTotal();
+		
 		try {
 			StatusTableRow roomI = table.getSelectionModel().getSelectedItem();
 
-			if(dPaid.getValue().equals(null) || trId.getText().isEmpty() || paid.getText().isEmpty()) { }
-			else if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
+			if(dPaid.getValue().equals(null) || trId.getText().isEmpty() || paid.getText().isEmpty()) {
+				alert.setHeaderText("Incomplete required information");
+				alert.setContentText("Please input ALL required information before click 'Next'.");
+				alert.showAndWait();
+			} else if(Integer.parseInt(paid.getText()) < this.total || dPaid.getValue().isAfter(checkin)) {
+				alert.setHeaderText("Please tell the customer");
+				alert.setContentText("The customer need to done the payment before check-in.");
+				alert.showAndWait();
+			} else if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
 				for (RoomInfo roomInfo : roomsI) {
-					if (roomI.getRoomNumber().equalsIgnoreCase(roomInfo.getRoomNumb()))
-						this.roomInfo = roomInfo;
+					if (roomI.getRoomNumber().equalsIgnoreCase(roomInfo.getRoomNumb())) this.roomInfo = roomInfo;
 				}
-				this.total = getandCalTotal();
 				this.paymentInfo = new PaymentInfo(dPaid.getValue(), Integer.parseInt(paid.getText()),
 						paymentTypes.getValue(), trId.getText());
 
@@ -280,16 +289,12 @@ public class RoomandPaymentController {
 				window.setScene(scene);
 				window.show();
 			} else {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Warning Alert");
 				alert.setHeaderText("Room Unavailable");
 				alert.setContentText("Room " + roomI.getRoomNumber()
 						+ " is on 'Occupied' state. Please choose another room with 'Vacant' state.");
 				alert.showAndWait();
 			}
 		} catch (Exception e) {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning Alert");
 			alert.setHeaderText("Incomplete required information");
 			alert.setContentText("Please input ALL required information before click 'Next'.");
 			alert.showAndWait();
