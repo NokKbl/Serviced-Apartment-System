@@ -24,6 +24,7 @@ import servicedapartment.data.TypeInfo;
 public class DatabaseFactory {
 	private static DatabaseFactory factory;
 	private final String url = "jdbc:sqlite:CustomerLog.db";
+	private String[] admin;
 	
 	protected DatabaseFactory() { }
 	
@@ -540,6 +541,22 @@ public class DatabaseFactory {
 			}
 		}catch(SQLException e) { }
 		return status;
+	}
+	
+	/**
+	 * Set username and password of admin.
+	 * @param admin is array of username and password.
+	 */
+	public void setAdmin(String[] admin) {
+		this.admin = admin;
+	}
+	
+	/**
+	 * Get username and passowrd of admin.
+	 * @return Array of usernmae and password.
+	 */
+	public String[] getAdmin() {
+		return this.admin;
 	}
 	
 }

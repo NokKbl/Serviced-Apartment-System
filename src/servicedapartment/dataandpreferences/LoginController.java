@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import servicedapartment.data.SwitchScene;
+import servicedapartment.database.DatabaseFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,10 +21,21 @@ public class LoginController {
 	@FXML private PasswordField passwordField;
 	@FXML private Button loginButton;
 	@FXML private Button backButton;
+	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private SwitchScene newScene = new SwitchScene();
-	private final String USERNAME = "admin";
-	private final String PASSWORD = "123456admin";
+	private String usernameAdmin;
+	private String passwordAdmin;
 	
+	/**
+	 * Set username and passowrd of admin.
+	 */
+	@FXML
+	public void initialize() {
+		String[] admin = factory.getAdmin();
+		usernameAdmin = admin[0];
+		passwordAdmin = admin[1];
+		
+	}
 	/**
 	 * Check required input (username and password) and switch to Administer part if both input are correct.
 	 * @throws IOException if FXMLLoader cannot get resource from file.
@@ -32,7 +44,7 @@ public class LoginController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		
-		if(username.equals(USERNAME) && password.equals(PASSWORD)) {
+		if(username.equals(usernameAdmin) && password.equals(passwordAdmin)) {
 			newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);

@@ -35,6 +35,9 @@ public class EditRatesController {
 	private SwitchScene newScene = new SwitchScene();
 	private DatabaseFactory factory = DatabaseFactory.getInstance();
 	private List<TypeInfo> list;
+	private final int DAILYLENGTH = 4;
+	private final int WEEKLYLENGTH = 5;
+	private final int MONTHLYLENGTH = 6;
 	
 	/**
 	 * Initialize components.
@@ -66,10 +69,47 @@ public class EditRatesController {
 	 * Get new rates from TextField and update the rates into the database.
 	 */
 	public void handleSave(ActionEvent event) {
+		String title = "";
+		String header = "";
+		String content = "";
+		
 		TypeInfo typeStd = null;
 		TypeInfo typeOne = null;
 		TypeInfo typeTwo = null;
 		TypeInfo typeThree = null;
+		
+		int stdDailyLength = studioDaily.getLength();
+		int stdWeeklyLength = studioWeekly.getLength();
+		int stdMonthlyLength = studioMonthly.getLength();
+		int onebrDailyLength = onebrDaily.getLength();
+		int onebrWeeklyLength = onebrWeekly.getLength();
+		int onebrMonthlyLength = onebrMonthly.getLength();
+		int twobrDailyLength = twobrDaily.getLength();
+		int twobrWeeklyLength = twobrWeekly.getLength();
+		int twobrMonthlyLength = twobrMonthly.getLength();
+		int threebrDailyLength = threebrDaily.getLength();
+		int threebrWeeklyLength = threebrWeekly.getLength();
+		int threebrMonthlyLength = threebrMonthly.getLength();
+		
+		if(stdDailyLength > DAILYLENGTH || onebrDailyLength > DAILYLENGTH || twobrDailyLength > DAILYLENGTH || threebrDailyLength > DAILYLENGTH) {
+			title = "Warning Alert";
+			header = "Invalid digits";
+			content = "Please input only 1-4 digits.";
+			showWarningAlert(title, header, content);
+			return;
+		}if(stdWeeklyLength > WEEKLYLENGTH || onebrWeeklyLength > WEEKLYLENGTH || twobrWeeklyLength > WEEKLYLENGTH || threebrWeeklyLength > WEEKLYLENGTH) {
+			title = "Warning Alert";
+			header = "Invalid digits";
+			content = "Please input only 1-5 digits.";
+			showWarningAlert(title, header, content);
+			return;
+		}if(stdMonthlyLength > MONTHLYLENGTH || onebrMonthlyLength > MONTHLYLENGTH || twobrMonthlyLength > MONTHLYLENGTH || threebrMonthlyLength > MONTHLYLENGTH) {
+			title = "Warning Alert";
+			header = "Invalid digits";
+			content = "Please input only 1-6 digits.";
+			showWarningAlert(title, header, content);
+			return;
+		}else {
 		
 		try {
 			typeStd = new TypeInfo("Studio", 
@@ -92,23 +132,24 @@ public class EditRatesController {
 							Integer.parseInt(threebrWeekly.getText()), 
 							Integer.parseInt(threebrMonthly.getText()));
 		} catch(NumberFormatException e) {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning Alert");
-			alert.setHeaderText("Value type not match.");
-			alert.setContentText("Please input only number.");
-			alert.showAndWait();
+			title = "Warning Alert";
+			header = "Value type not match.";
+			content = "Please input only number.";
+			showWarningAlert(title, header, content);
 		}
+		
 		
 		factory.updateDataToTypes(typeStd);
 		factory.updateDataToTypes(typeOne);
 		factory.updateDataToTypes(typeTwo);
 		factory.updateDataToTypes(typeThree);
 		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Information Alert");
-		alert.setHeaderText("Update successful");
-		alert.setContentText("Rental rates has successfully updated.");
-		alert.showAndWait();
+		title = "Information Alert";
+		header = "Update successful";
+		content = "Rental rates has successfully updated.";
+		showInformationAlert(title, header, content);
+		
+		}
 	}
 	
 	/**
@@ -119,4 +160,31 @@ public class EditRatesController {
 		newScene.switchScene(event, "/servicedapartment/dataandpreferences/AdminChoicesUI.fxml");
 	}
 
+
+	/**
+	 * Set title and content of Alert with WARNING content.
+	 * @param title is a text that will be set as title of Alert.
+	 * @param content is a text that will show as a warning content in Alert.
+	 */
+	public void showWarningAlert(String title, String header, String content) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		alert.showAndWait();
+	}
+	
+	/**
+	 * Set title and content of Alert with INFORMATION content.
+	 * @param title is a text that will be set as title of Alert.
+	 * @param content is a text that will show as an information content in Alert.
+	 */
+	public void showInformationAlert(String title, String header, String content) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		alert.showAndWait();
+	}
+	
 }
