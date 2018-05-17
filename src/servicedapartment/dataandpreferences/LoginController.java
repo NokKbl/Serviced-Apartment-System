@@ -27,7 +27,7 @@ public class LoginController {
 	private String passwordAdmin;
 	
 	/**
-	 * Set username and passowrd of admin.
+	 * Set username and password of administer.
 	 */
 	@FXML
 	public void initialize() {

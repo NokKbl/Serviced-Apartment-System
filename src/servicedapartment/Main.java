@@ -42,7 +42,9 @@ public class Main extends Application {
 	 * Create database file, table and insert default informations and rooms into database.
 	 */
 	public void createDatabaseandDefaultRooms() {
+		String[] admin = ReadFile.readFile();
 		DatabaseFactory factory = DatabaseFactory.getInstance();
+		factory.setAdmin(admin);
 		factory.createDatabase();
 		
 		List<RoomInfo> roomInfoData = new ArrayList<>();
@@ -85,9 +87,6 @@ public class Main extends Application {
 			factory.insertDataToRooms(roomh2);
 			factory.insertDataToRooms(roomh3);
 		}
-		
-		String[] admin = ReadFile.readFile();
-		factory.setAdmin(admin);
 	}
 	
 	/**

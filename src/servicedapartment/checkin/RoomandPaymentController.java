@@ -264,11 +264,11 @@ public class RoomandPaymentController {
 
 			if(dPaid.getValue().equals(null) || trId.getText().isEmpty() || paid.getText().isEmpty()) {
 				alert.setHeaderText("Incomplete required information");
-				alert.setContentText("Please input ALL required information before click 'Next'.");
+				alert.setContentText("Please input ALL required information and choose a room.");
 				alert.showAndWait();
-			} else if(Integer.parseInt(paid.getText()) < this.total || dPaid.getValue().isAfter(checkin)) {
+			} else if(Integer.parseInt(paid.getText()) != this.total || dPaid.getValue().isAfter(checkin)) {
 				alert.setHeaderText("Please tell the customer");
-				alert.setContentText("The customer need to done the payment and paid full rate before check-in.");
+				alert.setContentText("The customer need to done the payment and paid correct full rate before check-in.");
 				alert.showAndWait();
 			} else if (roomI.getRoomStatus().equalsIgnoreCase("Vacant")) {
 				for (RoomInfo roomInfo : roomsI) {
@@ -295,8 +295,8 @@ public class RoomandPaymentController {
 				alert.showAndWait();
 			}
 		} catch (Exception e) {
-			alert.setHeaderText("Incomplete required information");
-			alert.setContentText("Please input ALL required information before click 'Next'.");
+			alert.setHeaderText("Something gone wrong!");
+			alert.setContentText("Please check ALL input information.");
 			alert.showAndWait();
 		}
 	}

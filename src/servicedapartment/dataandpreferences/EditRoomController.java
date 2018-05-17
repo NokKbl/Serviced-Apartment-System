@@ -48,6 +48,7 @@ public class EditRoomController {
 	/**
 	 * Set title and content of Alert with INFORMATION content.
 	 * @param title is a text that will be set as title of Alert.
+	 * @param header is a text that will be set as header of Alert.
 	 * @param content is a text that will show as an information content in Alert.
 	 */
 	public void showInformationAlert(String title, String header, String content) {
@@ -61,6 +62,7 @@ public class EditRoomController {
 	/**
 	 * Set title and content of Alert with WARNING content.
 	 * @param title is a text that will be set as title of Alert.
+	 * @param header is a text that will be set as header of Alert.
 	 * @param content is a text that will show as a warning content in Alert.
 	 */
 	public void showWarningAlert(String title, String header, String content) {

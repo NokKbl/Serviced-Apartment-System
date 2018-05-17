@@ -23,7 +23,7 @@ import servicedapartment.data.TypeInfo;
  */
 public class DatabaseFactory {
 	private static DatabaseFactory factory;
-	private final String url = "jdbc:sqlite:CustomerLog.db";
+	private String url;
 	private String[] admin;
 	
 	protected DatabaseFactory() { }
@@ -549,6 +549,7 @@ public class DatabaseFactory {
 	 */
 	public void setAdmin(String[] admin) {
 		this.admin = admin;
+		this.url = admin[2];
 	}
 	
 	/**
