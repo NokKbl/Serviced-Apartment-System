@@ -8,20 +8,27 @@
 - [References](#references)
 
 ## About the Application
-**Serviced Apartment System** application is an application that will be use by clerks and administer/owner of any serviced apartment with four types of room (Studio, 1-Bedroom, 2-Bedroom and 3-Bedroom). This application can be separate in three main parts which are check-in, checkout and administer part.
+**Serviced Apartment System** is an application that will be used by clerks, administrators or owners of any serviced apartment with four types of room (Studio, 1-Bedroom, 2-Bedroom and 3-Bedroom). This application can be separated into three main parts: Check-in, Check-out and Administrator part.
 
 ### Check-in Part
-- **In Check-in part**, the clerk will get all required information and put into the fields in first window then ask about room type and payment information from the customer. If press 'Check In' button in order's summary window, all information of an order will be save into the database. 
+The following steps will be done by the clerk:
+1. Fill in the required information in the Booking & Check-in page
+2. Fill in customer's room type and payment information in the Room & Payment page
+3. Press the `Check In` button in the Order Summary page. The order information will be saved in the database.
 
 ![checkin](source/chin.png)
 
-### Checkout Part
-- **In Checkout part**, the clerk will ask the customer for room number and the customer name and use to search for an order that match with the required information in the database. If it can be identical, the checkout will be successful and room status will be change into vacant state.
+### Check-out Part
+The clerk fill in customer's name and room number in the Check-out page. If the values exist in the database, the check-out is successful and the room status will be marked as vacant.
 
 ![checkout](source/cout.png)
 
-### Administer Part
-- **In Administer part**, user need to input the correct username and password before use this part. This part will let the administer (owner) be able to edit room rates, add/remove rooms, view room status in each day and able to view all order's history.
+### Administrator Part
+Only admin users are allowed to access this part. The admin user needs to log in using their username and password. This part allows admins or owners to:
+- Edit room rates
+- Add/remove rooms
+- View room status by day
+- View order history
 
 **Demo username and password**
 
@@ -67,7 +74,7 @@ public boolean checkOverlap(String startA, String endA, String startB, String en
 > - See also: https://github.com/ThreeTen/threeten-extra
 
 ### Database
-We've used **Database** which is a better choice to save the data instead of a file because it can query data, handle very large data sets and look up data from a database rapidly.
+We chose to store data in a database instead of a file because database supports query, provides fast data access, and is able to handle large amount of data.
 
 #### Some basic database commands:
 - **CREATE DATABASE** creates a new database.
